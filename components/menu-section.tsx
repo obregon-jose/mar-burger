@@ -75,6 +75,7 @@ export function MenuSection() {
                       <p className="text-gray-400 text-sm">{product.description}</p>
                       <div className="flex items-center justify-between">
                         <span className="text-2xl font-bold text-red-500">${product.price.toLocaleString()}</span>
+                        <div className="flex gap-2">
                         <Button
                           size="sm"
                           onClick={() => handleOrderProduct(product.name, product.stock)}
@@ -85,8 +86,21 @@ export function MenuSection() {
                               : "bg-red-600 hover:bg-red-700 text-white"
                           }`}
                         >
-                          {isOutOfStock ? "AGOTADO" : "PEDIR AHORA"}
+                          {isOutOfStock ? "AGOTADO" : "Pedir ahora"}
                         </Button>
+                        <Button
+                          size="sm"
+                          onClick={() => handleOrderProduct(product.name, product.stock)}
+                          disabled={isOutOfStock}
+                          className={`font-bold ${
+                            isOutOfStock
+                              ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                              : "bg-red-600 hover:bg-red-700 text-white"
+                          }`}
+                        >
+                          {isOutOfStock ? "AGOTADO" : "Agregar"}
+                        </Button>
+                        </div>
                       </div>
                     </div>
                   </CardContent>
