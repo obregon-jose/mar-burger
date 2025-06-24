@@ -96,10 +96,10 @@ export function Header() {
 
       {/* <div className="fixed bottom-6 right-6 z-50">
         <Button
-          onClick={handleWhatsApp}
-          className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+          // onClick={handleWhatsApp}
+          className="w-14 h-14 rounded-full bg-red-500 hover:bg-red-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
         >
-          <MessageCircle className="w-6 h-6" />
+          <Store className="w-14 h-14" />
         </Button>
       </div> */}
     </>

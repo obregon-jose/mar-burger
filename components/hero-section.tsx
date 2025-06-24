@@ -53,7 +53,7 @@ export function HeroSection() {
                 <div className="hidden md:block lg:hidden mt-6 md:mt-0 flex-shrink-0">
                   <div className="relative w-48 h-48">
                     <Image
-                      src="/images/mar-burger-promo.png"
+                      src="/images/h.png"
                       alt="Hamburguesa Clásica Mar Burger"
                       width={200}
                       height={200}

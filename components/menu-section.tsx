@@ -88,7 +88,7 @@ export function MenuSection() {
                         >
                           {isOutOfStock ? "AGOTADO" : "Pedir ahora"}
                         </Button>
-                        <Button
+                        {/* <Button
                           size="sm"
                           onClick={() => handleOrderProduct(product.name, product.stock)}
                           disabled={isOutOfStock}
@@ -99,7 +99,7 @@ export function MenuSection() {
                           }`}
                         >
                           {isOutOfStock ? "AGOTADO" : "Agregar"}
-                        </Button>
+                        </Button> */}
                         </div>
                       </div>
                     </div>
