@@ -95,14 +95,15 @@ export function Header() {
         </div>
       </header>
 
-      <div className="fixed bottom-6 right-6 z-50">
-        <Button
-          // onClick={handleWhatsApp}
-          className="w-14 h-14 rounded-full bg-yellow-400 hover:bg-yellow-500 text-black shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
-        >
-          <ShoppingCart className="w-14 h-14 " />
-        </Button>
-      </div>
+      {true && (
+        <div className="fixed bottom-6 right-6 z-50 animate-bounce">
+          <Button
+        className="w-14 h-14 rounded-full bg-yellow-400 hover:bg-yellow-500 text-black shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+          >
+        <ShoppingCart className="w-14 h-14" />
+          </Button>
+        </div>
+      )}
     </>
   )
 }
