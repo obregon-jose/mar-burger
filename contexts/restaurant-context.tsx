@@ -18,17 +18,17 @@ interface Product {
 interface Promotion {
   id: number
   productId: number
-  title?: string // Opcional, usa el del producto si no se especifica
-  description?: string // Opcional, usa el del producto si no se especifica
-  image?: string // Opcional, usa el del producto si no se especifica
-  promotionPrice: number // Precio de la promoción (obligatorio)
+  title?: string 
+  description?: string 
+  image?: string 
+  promotionPrice: number 
   discountPercent: number
   startDate: string
   endDate: string
   enabled: boolean
   featured: boolean
-  isFlashSale: boolean // Nueva propiedad para promociones relámpago
-  flashDurationMinutes?: number // Duración en minutos para promociones relámpago
+  isFlashSale: boolean 
+  flashDurationMinutes?: number 
 }
 
 interface Category {
@@ -66,10 +66,15 @@ interface Hours {
 interface RestaurantData {
   restaurant: {
     name: string
+    slug: string
+    logo: string
+    heroImage: string
+    heroSlogan: string
     description: string
     phone: string
-    address: string
     instagram: string
+    address: string
+    enabled: boolean
   }
   products: Product[]
   promotions: Promotion[]
@@ -83,14 +88,7 @@ interface RestaurantData {
     rating: number
     enabled: boolean
   }
-  sections: {
-    hero: { enabled: boolean }
-    menu: { enabled: boolean }
-    promotions: { enabled: boolean }
-    location: { enabled: boolean }
-    contact: { enabled: boolean }
-    stats: { enabled: boolean }
-  }
+
 }
 
 interface RestaurantContextType {
@@ -113,12 +111,68 @@ const RestaurantContext = createContext<RestaurantContextType | undefined>(undef
 const initialData: RestaurantData = {
   restaurant: {
     name: "Mar Burger",
-    description:
-      "Las mejores hamburguesas artesanales de Cali, preparadas con ingredientes frescos y de la mejor calidad.",
+    slug: "mar-burger",
+    logo: "/images/h.png",
+    heroImage: "/images/h.png",
+    heroSlogan: "¡Veni y deborala!",
+    description:"Restaurante de comidas rapidas y mariscos",
     phone: "3205521623",
-    address: "Calle 15 #8-45, Centro, Cali",
     instagram: "@marburgeroficial",
+    address: "Carrera 29 #66-05, Ciudad 2000, Cali", //corregir
+    enabled: true
   },
+  stats: {
+    happyCustomers: 500,
+    averageTime: "15min",
+    rating: 4.9,
+    enabled: true,
+  },
+  hours: {
+    monday: { open: "11:00", close: "22:00", enabled: false },
+    tuesday: { open: "11:00", close: "22:00", enabled: true },
+    wednesday: { open: "11:00", close: "22:00", enabled: true },
+    thursday: { open: "11:00", close: "22:00", enabled: true },
+    friday: { open: "11:00", close: "22:00", enabled: true },
+    saturday: { open: "11:00", close: "23:00", enabled: true },
+    sunday: { open: "12:00", close: "22:00", enabled: true },
+  },
+  deliveryZones: [
+    { id: 1, name: "Centro", price: 3000, time: "20-30 min", enabled: true },
+    { id: 2, name: "Norte", price: 4000, time: "25-35 min", enabled: true },
+    { id: 3, name: "Sur", price: 4000, time: "25-35 min", enabled: true },
+    { id: 4, name: "Oeste", price: 5000, time: "30-40 min", enabled: true },
+  ],
+  paymentMethods: [
+    {
+      id: 1,
+      name: "Efectivo",
+      icon: "banknote",
+      description: "Pago en efectivo al recibir",
+      enabled: true,
+    },
+    {
+      id: 2,
+      name: "Nequi",
+      icon: "smartphone",
+      description: "Transferencia por Nequi",
+      enabled: true,
+    },
+    {
+      id: 3,
+      name: "Daviplata",
+      icon: "smartphone",
+      description: "Transferencia por Daviplata",
+      enabled: true,
+    },
+    {
+      id: 4,
+      name: "Tarjeta",
+      icon: "credit-card",
+      description: "Tarjeta débito/crédito",
+      enabled: true,
+    },
+  ],
+
   categories: [
     { id: "hamburguesas", name: "Hamburguesas", icon: "🍔", enabled: true, order: 1 },
     { id: "acompañamientos", name: "Acompañamientos", icon: "🍟", enabled: true, order: 2 },
@@ -240,65 +294,7 @@ const initialData: RestaurantData = {
       isFlashSale: false,
     },
   ],
-  paymentMethods: [
-    {
-      id: 1,
-      name: "Efectivo",
-      icon: "banknote",
-      description: "Pago en efectivo al recibir",
-      enabled: true,
-    },
-    {
-      id: 2,
-      name: "Nequi",
-      icon: "smartphone",
-      description: "Transferencia por Nequi",
-      enabled: true,
-    },
-    {
-      id: 3,
-      name: "Daviplata",
-      icon: "smartphone",
-      description: "Transferencia por Daviplata",
-      enabled: true,
-    },
-    {
-      id: 4,
-      name: "Tarjeta",
-      icon: "credit-card",
-      description: "Tarjeta débito/crédito",
-      enabled: true,
-    },
-  ],
-  deliveryZones: [
-    { id: 1, name: "Centro", price: 3000, time: "20-30 min", enabled: true },
-    { id: 2, name: "Norte", price: 4000, time: "25-35 min", enabled: true },
-    { id: 3, name: "Sur", price: 4000, time: "25-35 min", enabled: true },
-    { id: 4, name: "Oeste", price: 5000, time: "30-40 min", enabled: true },
-  ],
-  hours: {
-    monday: { open: "11:00", close: "22:00", enabled: true },
-    tuesday: { open: "11:00", close: "22:00", enabled: true },
-    wednesday: { open: "11:00", close: "22:00", enabled: true },
-    thursday: { open: "11:00", close: "22:00", enabled: true },
-    friday: { open: "11:00", close: "22:00", enabled: true },
-    saturday: { open: "11:00", close: "23:00", enabled: true },
-    sunday: { open: "12:00", close: "22:00", enabled: true },
-  },
-  stats: {
-    happyCustomers: 500,
-    averageTime: "15min",
-    rating: 4.9,
-    enabled: true,
-  },
-  sections: {
-    hero: { enabled: true },
-    menu: { enabled: true },
-    promotions: { enabled: true },
-    location: { enabled: true },
-    contact: { enabled: true },
-    stats: { enabled: true },
-  },
+
 }
 
 export function RestaurantProvider({ children }: { children: React.ReactNode }) {

@@ -5,7 +5,7 @@ module.exports = {
     policy: [
       { 
         userAgent: '*',
-        disallow: ['/api', '/private', '/_next/',, '/404', '/500', '/admin/', '/auth/'], 
+        disallow: ['/api', '/private', '/_next/',, '/404', '/500', '/dashboard/', '/auth/'], 
         allow: '/',
       },
     ],

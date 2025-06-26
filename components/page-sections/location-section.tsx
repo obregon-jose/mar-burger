@@ -10,10 +10,6 @@ export function LocationSection() {
   const { data } = useRestaurant()
   // const enabledDeliveryZones = data.deliveryZones.filter((zone) => zone.enabled)
 
-  if (!data.sections.location.enabled) {
-    return null
-  }
-
   return (
     <section id="ubicacion" className="py-12 sm:py-16 lg:py-20 bg-gray-900">
       <div className="container mx-auto px-4">

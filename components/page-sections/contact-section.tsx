@@ -35,10 +35,6 @@ export function ContactSection() {
 
   const enabledPaymentMethods = data.paymentMethods.filter((method) => method.enabled)
 
-  if (!data.sections.contact.enabled) {
-    return null
-  }
-
   return (
     <section id="contacto" className="py-20 bg-black">
       <div className="container mx-auto px-4">

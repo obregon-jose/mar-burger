@@ -17,10 +17,6 @@ export function MenuSection() {
     window.open(whatsappUrl, "_blank")
   }
 
-  if (!data.sections.menu.enabled) {
-    return null
-  }
-
   return (
     <section id="menu" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
@@ -107,6 +103,13 @@ export function MenuSection() {
                 </Card>
               )
             })}
+        </div>
+         <div className="text-center mt-12">
+          {/* <FullMenuModal> */}
+            <Button size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-lg px-8 py-4">
+              VER MENÚ COMPLETO
+            </Button>
+          {/* </FullMenuModal> */}
         </div>
       </div>
     </section>

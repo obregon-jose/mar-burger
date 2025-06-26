@@ -77,10 +77,6 @@ export function PromotionsCarousel() {
     )
   }
 
-  // Si la sección no está habilitada, no mostrar nada
-  if (!data.sections.promotions.enabled) {
-    return null
-  }
 
   // Si no hay promociones activas, mostrar mensaje
   if (availableProductsWithPromotions.length === 0) {

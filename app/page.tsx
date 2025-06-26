@@ -1,32 +1,34 @@
-import { Header } from "@/components/header"
-import { HeroSection } from "@/components/hero-section"
-import { MenuSection } from "@/components/menu-section"
-import { PromotionsCarousel } from "@/components/promotions-carousel"
-import { LocationSection } from "@/components/location-section"
-import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
-import { FloatingElements } from "@/components/floating-elements"
-// import { AdminAccessButton } from "@/components/admin-access-button"
 import { RestaurantProvider } from "@/contexts/restaurant-context"
+import { FloatingElements } from "@/components/floating-elements"
+import { Header } from "@/components/header"
+import { Hero } from "@/components/page-sections/hero"
+import { MenuSection } from "@/components/page-sections/menu-section"
+import { PromotionsCarousel } from "@/components/page-sections/promotions-carousel"
+import { PaymentMethod } from "@/components/page-sections/payment-session"
+import { LocationSection } from "@/components/page-sections/location-section"
+import { ContactSection } from "@/components/page-sections/contact-section"
+import { Footer } from "@/components/footer"
+
+// import { AdminAccessButton } from "@/components/admin-access-button"
 // import { PaymentMethod } from "@/components/payment-session"
 
 export default function HomePage() {
   return (
     <RestaurantProvider>
-      <div className="min-h-screen bg-black relative">
+       <div className="min-h-screen bg-black relative">
         <FloatingElements />
-         <Header />
+        <Header />
         <main>
-          <HeroSection />
-          <MenuSection />
-          <PromotionsCarousel />
-          {/* <PaymentMethod/> */}
-          <LocationSection />
-          <ContactSection />
+          {/* <Hero /> */}
+          {/* <MenuSection /> */}
+          {/* <PromotionsCarousel /> */}
+          {/* <PaymentMethod /> */}
+          {/* <LocationSection /> */}
+          {/* <ContactSection /> */}
         </main>
-        <Footer /> 
-        {/* <AdminAccessButton />  */}
-      </div>
+        {/* <Footer />  */}
+        {/* <AdminAccessButton /> */}
+      </div> 
     </RestaurantProvider>
   )
 }

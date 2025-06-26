@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Star } from "lucide-react"
 import { useRestaurant } from "@/contexts/restaurant-context"
 
-export function HeroSection() {
+export function Hero() {
   const { data } = useRestaurant()
 
   // const handleOrderClick = () => {
@@ -37,7 +37,7 @@ export function HeroSection() {
                     <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <span className="text-white text-sm">La mejor hamburguesa de la ciudad</span>
+                <span className="text-white text-sm">{data.restaurant.heroSlogan}</span>
               </div>
 
               <div className="flex flex-col md:flex-row md:items-center md:space-x-6">
@@ -53,7 +53,7 @@ export function HeroSection() {
                 <div className="hidden md:block lg:hidden mt-6 md:mt-0 flex-shrink-0">
                   <div className="relative w-48 h-48">
                     <Image
-                      src="/images/h.png"
+                      src={data.restaurant.heroImage}
                       alt="Hamburguesa Clásica Mar Burger"
                       width={200}
                       height={200}
@@ -107,10 +107,10 @@ export function HeroSection() {
           <div className="hidden lg:block relative">
             <div className="relative z-10">
               <Image
-                src="/images/mar-burger-promo.png"
+                src={data.restaurant.heroImage}
                 alt="Hamburguesa Clásica Mar Burger"
                 width={600}
-                height={800}
+                height={600}
                 className="w-full h-auto object-contain"
                 priority
               />
