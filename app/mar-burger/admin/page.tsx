@@ -1,6 +1,6 @@
-// "use client"
+"use client"
 
-// import type React from "react"
+import type React from "react"
 // import { useState } from "react"
 // import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 // import { Button } from "@/components/ui/button"
@@ -1516,3 +1516,12 @@
 //     </RestaurantProvider>
 //   )
 // }
+
+export default function AdminPage() {
+  return (
+    <div>
+      <h1>Panel de administración</h1>
+    </div>
+  );
+}
+
