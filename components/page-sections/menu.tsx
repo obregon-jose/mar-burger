@@ -5,16 +5,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useRestaurant } from "@/contexts/restaurant-context"
+import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
 
-export function MenuSection() {
+export function Menu() {
   const { data } = useRestaurant()
 
   const handleOrderProduct = (productName: string, stock: string) => {
     if (stock === "out_of_stock") return
-
     const message = `¡Hola! Me gustaría pedir ${productName} 🍔`
-    const whatsappUrl = `https://wa.me/57${data.restaurant.phone}?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, "_blank")
+    sendWhatsAppMessage(data.restaurant.phone, message)
   }
 
   return (

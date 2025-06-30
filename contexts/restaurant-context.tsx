@@ -89,6 +89,8 @@ interface RestaurantData {
     enabled: boolean
   }
 
+  shoppingCart?: boolean
+
 }
 
 interface RestaurantContextType {
@@ -112,10 +114,10 @@ const initialData: RestaurantData = {
   restaurant: {
     name: "Mar Burger",
     slug: "mar-burger",
-    logo: "/images/h.png",
+    logo: "/images/logo.png",
     heroImage: "/images/h.png",
-    heroSlogan: "¡Veni y deborala!",
-    description:"Restaurante de comidas rapidas y mariscos",
+    heroSlogan: "¡Sabor que conquista el mar y la ciudad!",
+    description: "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
     phone: "3205521623",
     instagram: "@marburgeroficial",
     address: "Carrera 29 #66-05, Ciudad 2000, Cali", //corregir
@@ -184,7 +186,7 @@ const initialData: RestaurantData = {
       name: "Hamburguesa Clásica",
       description: "Carne de res, lechuga, tomate, cebolla, queso y salsa especial",
       price: 18000,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/h.png?height=300&width=300",
       category: "hamburguesas",
       popular: true,
       enabled: true,
@@ -195,18 +197,7 @@ const initialData: RestaurantData = {
       name: "Hamburguesa BBQ",
       description: "Carne de res, bacon, cebolla caramelizada, queso y salsa BBQ",
       price: 22000,
-      image: "/placeholder.svg?height=300&width=300",
-      category: "hamburguesas",
-      popular: false,
-      enabled: true,
-      stock: "available",
-    },
-    {
-      id: 3,
-      name: "Hamburguesa Pollo",
-      description: "Pechuga de pollo, lechuga, tomate, aguacate y mayonesa",
-      price: 20000,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/h.png?height=300&width=300",
       category: "hamburguesas",
       popular: false,
       enabled: true,
@@ -217,7 +208,7 @@ const initialData: RestaurantData = {
       name: "Hamburguesa Doble",
       description: "Doble carne, doble queso, lechuga, tomate y salsa especial",
       price: 25000,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/h.png?height=300&width=300",
       category: "hamburguesas",
       popular: true,
       enabled: true,
@@ -228,18 +219,7 @@ const initialData: RestaurantData = {
       name: "Papas Fritas",
       description: "Papas crujientes con sal marina",
       price: 8000,
-      image: "/placeholder.svg?height=300&width=300",
-      category: "acompañamientos",
-      popular: false,
-      enabled: true,
-      stock: "available",
-    },
-    {
-      id: 6,
-      name: "Aros de Cebolla",
-      description: "Aros de cebolla empanizados y fritos",
-      price: 10000,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/h.png?height=300&width=300",
       category: "acompañamientos",
       popular: false,
       enabled: true,
@@ -250,7 +230,7 @@ const initialData: RestaurantData = {
       name: "Gaseosas",
       description: "Coca-Cola, Pepsi, Sprite - 350ml",
       price: 5000,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/h.png?height=300&width=300",
       category: "bebidas",
       popular: false,
       enabled: true,
@@ -261,7 +241,7 @@ const initialData: RestaurantData = {
       name: "Jugos Naturales",
       description: "Naranja, limón, mora - 400ml",
       price: 7000,
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/h.png?height=300&width=300",
       category: "bebidas",
       popular: false,
       enabled: true,
@@ -294,6 +274,9 @@ const initialData: RestaurantData = {
       isFlashSale: false,
     },
   ],
+
+
+  
 
 }
 

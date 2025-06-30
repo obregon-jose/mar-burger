@@ -8,12 +8,6 @@ import { useRestaurant } from "@/contexts/restaurant-context"
 export function Hero() {
   const { data } = useRestaurant()
 
-  // const handleOrderClick = () => {
-  //   const message = "¡Hola! Me gustaría hacer un pedido en Mar Burger 🍔"
-  //   const whatsappUrl = `https://wa.me/57${data.restaurant.phone}?text=${encodeURIComponent(message)}`
-  //   window.open(whatsappUrl, "_blank")
-  // }
-
   const scrollToMenu = () => {
     const menuSection = document.getElementById("menu")
     if (menuSection) {

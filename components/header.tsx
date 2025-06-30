@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, ShoppingCart, ShoppingCartIcon } from "lucide-react"
+import { LucidePersonStanding, Menu, PersonStanding, ShoppingCart, ShoppingCartIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useRestaurant } from "@/contexts/restaurant-context"
@@ -30,13 +30,13 @@ export function Header() {
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-12 h-12 bg-gradient-to-br from-red-600- to-red-700- rounded-full flex items-center justify-center">
                 <Image
-                      src={data.restaurant.logo}
-                      alt="Logo de Mar Burger"
-                      width={32}
-                      height={32}
-                      className="w-full- h-full- object-contain-"
-                      priority
-                    />
+                  src={data.restaurant.logo}
+                  alt="Logo de Mar Burger"
+                  width={64}
+                  height={64}
+                  className="w-full- h-full- object-contain-"
+                  priority
+                />
               </div>
               <div className="hidden sm:block">
                 <span className="text-yellow-400 font-bold text-xl">MAR</span>
@@ -64,8 +64,16 @@ export function Header() {
               <Button onClick={() => sendWhatsAppMessage(data.restaurant.phone)} className="bg-red-600 hover:bg-red-700 text-white font-bold">
                 PEDIR AHORA
               </Button>
-            </div>
+              <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">
+                <Link href="/auth/login" className="flex items-center space-x-2">
+                  <LucidePersonStanding />
 
+                </Link>
+
+              </Button>
+            </div>
+            
+              {/* MOBILE */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="lg:hidden text-white">
@@ -84,10 +92,10 @@ export function Header() {
                       {item.label}
                     </Link>
                   ))}
-                    <Button onClick={() => sendWhatsAppMessage(data.restaurant.phone)} className="bg-red-600 hover:bg-red-700 text-white font-bold flex items-center space-x-2">
+                  <Button onClick={() => sendWhatsAppMessage(data.restaurant.phone)} className="bg-red-600 hover:bg-red-700 text-white font-bold flex items-center space-x-2">
                     <WhatsAppIcon className="w-6 h-6 text-white" />
                     <span>PEDIR AHORA</span>
-                    </Button>
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
@@ -95,14 +103,17 @@ export function Header() {
         </div>
       </header>
 
-      {true && (
-        <div className="fixed bottom-6 right-6 z-50 animate-bounce">
-          <Button
-        className="w-14 h-14 rounded-full bg-yellow-400 hover:bg-yellow-500 text-black shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
-          >
-        <ShoppingCart className="w-14 h-14" />
-          </Button>
+      {data.shoppingCart && (
+        <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <ShoppingCart className="w-8 h-8 text-white" />
         </div>
+        // <div className="fixed bottom-6 right-6 z-50 animate-bounce">
+        //   <Button
+        //     className="w-14 h-14 rounded-full bg-yellow-400 hover:bg-yellow-500 text-black shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+        //   >
+        //     <ShoppingCart className="w-6 h-6" />
+        //   </Button>
+        // </div>
       )}
     </>
   )
