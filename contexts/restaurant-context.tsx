@@ -63,6 +63,19 @@ interface Hours {
   }
 }
 
+interface shoppingCart{
+  enabled: boolean,
+  items: {
+    id: number
+    productId: number
+    quantity: number
+    note?: string
+    image?: string
+    name?: string
+    price?: number
+  }[]
+}
+
 interface RestaurantData {
   restaurant: {
     name: string
@@ -89,7 +102,7 @@ interface RestaurantData {
     enabled: boolean
   }
 
-  shoppingCart?: boolean
+  shoppingCarts: shoppingCart
 
 }
 
@@ -124,9 +137,9 @@ const initialData: RestaurantData = {
     enabled: true
   },
   stats: {
-    happyCustomers: 500,
-    averageTime: "15min",
-    rating: 4.9,
+    happyCustomers: 100,
+    averageTime: "20min",
+    rating: 4.2,
     enabled: true,
   },
   hours: {
@@ -274,6 +287,30 @@ const initialData: RestaurantData = {
       isFlashSale: false,
     },
   ],
+  //quitar se maneja desde sessionstorage
+  shoppingCarts: {
+    enabled: true,
+    items: [
+      {
+        id: 1,
+        productId: 1,
+        quantity: 3,
+        note: "Sin cebolla",
+        image: "/images/h.png?height=300&width=300",
+        name: "Hamburguesa Clásica",
+        price: 18000,
+      },
+      {
+        id: 2,
+        productId: 5,
+        quantity: 1,
+        note: "Con extra sal",
+        image: "/images/h.png?height=300&width=300",
+        name: "Papas Fritas",
+        price: 8000,
+      },
+    ],
+  }
 
 
   

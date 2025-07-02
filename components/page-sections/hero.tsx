@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Star } from "lucide-react"
 import { useRestaurant } from "@/contexts/restaurant-context"
+import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
 
 export function Hero() {
   const { data } = useRestaurant()
@@ -69,14 +70,14 @@ export function Hero() {
                 VER MENÚ
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
-              {/* <Button
+              <Button
                 size="lg"
-                onClick={handleOrderClick}
+                onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-black font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105"
+                className="border-2 border-white text-black hover:bg-white hover:text-black font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105"
               >
                 PEDIR AHORA
-              </Button> */}
+              </Button>
             </div>
 
             {data.stats.enabled && (

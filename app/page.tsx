@@ -3,7 +3,9 @@ import { FloatingElements } from "@/components/floating-elements"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/page-sections/hero"
 import { Menu } from "@/components/page-sections/menu"
-import { PromotionsCarousel } from "@/components/page-sections/promotions-carousel"
+import { Promotions } from "../components/page-sections/promotions"
+// import { PromotionsCarousel } from "@/components/page-sections/promotions-carousel"
+
 import { PaymentMethod } from "@/components/page-sections/payment-session"
 import { LocationSection } from "@/components/page-sections/location-section"
 import { ContactSection } from "@/components/page-sections/contact-section"
@@ -22,10 +24,12 @@ export default function HomePage() {
         <main>
           <Hero />
           <Menu />
-          {/* <PromotionsCarousel /> */}
+          <Promotions />
           {/* <PaymentMethod /> */}
           {/* <LocationSection /> */}
           {/* <ContactSection /> */}
+          {/* reseñas */}
+          {/* preguntas frecuentes */}
         </main>
         {/* <Footer />  */}
         {/* <AdminAccessButton /> */}

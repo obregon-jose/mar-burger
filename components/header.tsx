@@ -3,15 +3,18 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { LucidePersonStanding, Menu, PersonStanding, ShoppingCart, ShoppingCartIcon } from "lucide-react"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useRestaurant } from "@/contexts/restaurant-context"
 import { WhatsAppIcon } from "@/app/icons"
 import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
+import { Shopping } from "./shopping"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false)
+
   const { data } = useRestaurant()
 
   const navItems = [
@@ -64,16 +67,16 @@ export function Header() {
               <Button onClick={() => sendWhatsAppMessage(data.restaurant.phone)} className="bg-red-600 hover:bg-red-700 text-white font-bold">
                 PEDIR AHORA
               </Button>
-              <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">
-                <Link href="/auth/login" className="flex items-center space-x-2">
-                  <LucidePersonStanding />
+              {/* <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">
+          <Link href="/auth/login" className="flex items-center space-x-2">
+            <LucidePersonStanding />
 
-                </Link>
+          </Link>
 
-              </Button>
+          </Button> */}
             </div>
-            
-              {/* MOBILE */}
+
+            {/* MOBILE */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="lg:hidden text-white">
@@ -103,18 +106,9 @@ export function Header() {
         </div>
       </header>
 
-      {data.shoppingCart && (
-        <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <ShoppingCart className="w-8 h-8 text-white" />
-        </div>
-        // <div className="fixed bottom-6 right-6 z-50 animate-bounce">
-        //   <Button
-        //     className="w-14 h-14 rounded-full bg-yellow-400 hover:bg-yellow-500 text-black shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
-        //   >
-        //     <ShoppingCart className="w-6 h-6" />
-        //   </Button>
-        // </div>
-      )}
+<Shopping />
+
+
     </>
   )
 }

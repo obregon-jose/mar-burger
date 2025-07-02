@@ -15,7 +15,7 @@ const createDateFromInput = (dateString: string) => {
   return new Date(dateString + "T00:00:00-05:00") // Colombia UTC-5
 }
 
-export function PromotionsCarousel() {
+export function Promotions() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const { data } = useRestaurant()
 
