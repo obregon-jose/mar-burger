@@ -81,7 +81,7 @@ export function Promotions() {
   // Si no hay promociones activas, mostrar mensaje
   if (availableProductsWithPromotions.length === 0) {
     return (
-      <section id="promociones" className=" py-12 sm:py-16 lg:py-20 bg-black relative- z-10">
+      <section id="promociones" className="py-12 sm:py-16 lg:py-20 bg-black relative- z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -249,9 +249,8 @@ export function Promotions() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`h-2 sm:h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide ? "bg-red-500 w-6 sm:w-8" : "bg-gray-600 hover:bg-gray-500 w-2 sm:w-3"
-                  }`}
+                  className={`h-2 sm:h-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-red-500 w-6 sm:w-8" : "bg-gray-600 hover:bg-gray-500 w-2 sm:w-3"
+                    }`}
                 />
               ))}
             </div>

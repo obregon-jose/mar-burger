@@ -4,16 +4,16 @@ import { Header } from "@/components/header"
 import { Hero } from "@/components/page-sections/hero"
 import { Menu } from "@/components/page-sections/menu"
 import { Promotions } from "../components/page-sections/promotions"
+import { PaymentMethod } from "@/components/page-sections/payment"
+import { Location } from "@/components/page-sections/location"
+import { Contact } from "@/components/page-sections/contact"
+import { Reviews } from "@/components/page-sections/reviews"
 // import { PromotionsCarousel } from "@/components/page-sections/promotions-carousel"
-
-import { PaymentMethod } from "@/components/page-sections/payment-session"
-import { LocationSection } from "@/components/page-sections/location-section"
-import { ContactSection } from "@/components/page-sections/contact-section"
 import { Footer } from "@/components/footer"
-
+import { Questions } from "@/components/page-sections/questions"
 
 // import { AdminAccessButton } from "@/components/admin-access-button"
-// import { PaymentMethod } from "@/components/payment-session"
+
 
 export default function HomePage() {
   return (
@@ -24,12 +24,12 @@ export default function HomePage() {
         <main>
           <Hero />
           <Menu />
-          <Promotions />
+          {/* <Promotions /> */}
           {/* <PaymentMethod /> */}
-          {/* <LocationSection /> */}
-          {/* <ContactSection /> */}
-          {/* reseñas */}
-          {/* preguntas frecuentes */}
+          {/* <Location /> */}
+          {/* <Contact /> */}
+          {/* <Reviews /> */}
+          {/* <Questions /> */}
         </main>
         {/* <Footer />  */}
         {/* <AdminAccessButton /> */}

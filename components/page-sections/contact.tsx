@@ -9,7 +9,7 @@ import {  Send, Banknote, Smartphone, CreditCard } from "lucide-react"
 import { useRestaurant } from "@/contexts/restaurant-context"
 import { InstagramIcon, WhatsAppIcon } from "@/app/icons"
 
-export function ContactSection() {
+export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",

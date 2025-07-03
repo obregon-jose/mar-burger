@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { useRestaurant } from "@/contexts/restaurant-context"
 import { WhatsAppIcon } from "@/app/icons"
 
-export function LocationSection() {
+export function Location() {
   const { data } = useRestaurant()
   // const enabledDeliveryZones = data.deliveryZones.filter((zone) => zone.enabled)
 
@@ -19,7 +19,7 @@ export function LocationSection() {
             <span className="text-white"> UBICACIÓN</span>
           </h2>
           <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-            Visítanos en nuestro restaurante en el centro de Cali
+            Visítanos en nuestro restaurante en Santiago de Cali
           </p>
         </div>
 
