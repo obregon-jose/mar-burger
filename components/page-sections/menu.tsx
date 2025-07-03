@@ -30,6 +30,26 @@ export function Menu() {
   const [searchTerm, setSearchTerm] = useState("")
 
   // Cambia el valor inicial de activeCategory a "Menú Completo"
+  // Filtrar productos según la categoría activa y el término de búsqueda
+  const filteredProducts = data.products
+    .filter((product) => product.enabled)
+    .filter((product) => {
+      // Si está en "Menú", mostrar todos los productos habilitados
+      if (activeCategory === "Menú") return true
+      // Si está en otra categoría, filtrar por categoría
+      return (product.category || "Otros") === activeCategory
+    })
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description?.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+
+  // Agrupar productos por categoría solo si está en "Menú"
+  const groupedProducts = categories.reduce((acc, cat) => {
+    acc[cat] = filteredProducts.filter((p) => (p.category || "Otros") === cat)
+    return acc
+  }, {} as Record<string, typeof data.products>)
+
   return (
     <section id="menu" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
@@ -38,75 +58,61 @@ export function Menu() {
             <span className="text-yellow-400">NUESTRO</span>
             <span className="text-white"> MENÚ</span>
           </h2>
-          
           <p className="text-gray-300 text-lg max-w-2xl mx-auto text-center">
             Descubre nuestras deliciosas opciones preparadas con ingredientes frescos y de la mejor calidad
           </p>
         </div>
 
-        {/* Opciones para el filtro de categorías */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {allCategories.map((cat) => (
-            <Button
-              key={cat}
-              variant={activeCategory === cat ? "default" : "outline"}
-              className={`font-bold px-6 py-2 rounded-full ${activeCategory === cat
+        {/* Filtro */}
+        <div>
+          {/* Categorías */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {allCategories.map((cat) => (
+              <Button
+                key={cat}
+                variant={activeCategory === cat ? "default" : "outline"}
+                className={`font-bold px-6 py-2 rounded-md ${activeCategory === cat
                   ? "bg-yellow-400 text-black"
                   : "bg-gray-800 text-gray-200 hover:bg-yellow-400 hover:text-black"
-                }`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </Button>
-          ))}
+                  }`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </Button>
+            ))}
+          </div>
+
+          {/* Búsqueda */}
+          <div className="flex justify-center mb-8">
+            <input
+              type="text"
+              placeholder="Buscar..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full max-w-md px-4 py-2 rounded-lg border border-yellow-400 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 "
+            />
+          </div>
         </div>
 
-        {/* Filtro de búsqueda */}
-        <div className="flex justify-center mb-8">
-          <input
-            type="text"
-            placeholder="Buscar..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} //
-            className="w-full max-w-md px-4 py-2 rounded-lg border border-yellow-400 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 "
-          />
-        </div>
-
-        {/* Carrusel de productos por categoría */}
+        {/* Renderizado de productos */}
         {activeCategory === "Menú" ? (
-          // Mostrar todos los carruseles de categorías
           categories.map((cat) => {
-            // Filtrar productos por búsqueda
-            const filteredProducts = data.products
-              .filter((product) => product.enabled && (product.category || "Otros") === cat)
-              .filter((product) =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                product.description?.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-            if (filteredProducts.length === 0) return null
-
+            const products = groupedProducts[cat]
+            if (!products || products.length === 0) return null
             return (
               <div
                 key={cat}
                 className="mb-12 bg-gray-800 rounded-2xl shadow-lg p-6 border border-yellow-400/30"
               >
-                {/* <div className="flex flex-col items-center mb-4 animate-pulse-">
-                  <h3 className="text-2xl font-extrabold text-yellow-400 text-center tracking-widest uppercase drop-shadow ">
+                <div className="flex flex-col items-center mb-4 animate-pulse">
+                  <h3 className="text-2xl font-extrabold text-center tracking-widest uppercase bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-lg">
                     {cat}
                   </h3>
                   <span className="block w-16 h-1 bg-yellow-400 rounded-full mt-1" />
-                </div> */}
-
-                <div className="flex flex-col items-center mb-4 animate-pulse">
-                  <h3 className="text-2xl font-extrabold text-center tracking-widest uppercase bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-lg">
-                  {cat}
-                  </h3>
-                  <span className="block w-16 h-1 bg-yellow-400 rounded-full mt-1" />
                 </div>
-
                 <div className="overflow-x-auto pb-4">
                   <div className="flex gap-4 min-w-[220px] justify-center">
-                    {filteredProducts.map((product) => {
+                    {products.map((product) => {
                       const isOutOfStock = product.stock === "out_of_stock"
                       return (
                         <Card
@@ -134,7 +140,6 @@ export function Menu() {
                                 </div>
                               )}
                             </div>
-
                             <div className="space-y-2">
                               <h3 className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors text-center uppercase ">
                                 {product.name}
@@ -148,8 +153,8 @@ export function Menu() {
                                     onClick={() => handleOrderProduct(product.name, product.stock)}
                                     disabled={isOutOfStock}
                                     className={`font-bold ${isOutOfStock
-                                        ? "bg-gray-600 text-gray-400 cursor-not-allowed"
-                                        : "bg-red-600 hover:bg-red-700 text-white"
+                                      ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                                      : "bg-red-600 hover:bg-red-700 text-white"
                                       }`}
                                   >
                                     {isOutOfStock ? "AGOTADO" : "Pedir"}
@@ -167,92 +172,73 @@ export function Menu() {
             )
           })
         ) : (
-          // Mostrar solo la categoría seleccionada
-          (() => {
-            // Filtrar productos por búsqueda
-            const filteredProducts = data.products
-              .filter((product) => product.enabled && (product.category || "Otros") === activeCategory)
-              .filter((product) =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                product.description?.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-            if (filteredProducts.length === 0) {
-              return (
-                <div className="mb-12 bg-gray-800 rounded-2xl shadow-lg p-6 border border-yellow-400/30">
-                  <h3 className="text-2xl font-extrabold text-yellow-400 mb-4 text-center tracking-widest uppercase drop-shadow">
-                    {activeCategory}
-                  </h3>
-                  <p className="text-center text-gray-400">No se encontraron productos.</p>
-                </div>
-              )
-            }
-            return (
-              <div className="mb-12 bg-gray-800 rounded-2xl shadow-lg p-6 border border-yellow-400/30">
-                <h3 className="text-2xl font-extrabold text-yellow-400 mb-4 text-center tracking-widest uppercase drop-shadow">
-                  {activeCategory}
-                </h3>
-                <div className="overflow-x-auto pb-4">
-                  <div className="flex gap-4 min-w-[220px] justify-center">
-                    {filteredProducts.map((product) => {
-                      const isOutOfStock = product.stock === "out_of_stock"
-                      return (
-                        <Card
-                          key={product.id}
-                          className={`min-w-[220px] max-w-[220px] bg-black border-red-600/20 hover:border-red-600/40 transition-all duration-300 group ${isOutOfStock ? "opacity-75" : ""
-                            }`}
-                        >
-                          <CardContent className="p-4">
-                            <div className="relative mb-3">
-                              <Image
-                                src={product.image || "/placeholder.svg"}
-                                alt={product.name}
-                                width={180}
-                                height={180}
-                                className="w-full h-32 object-cover rounded-lg"
-                              />
-                              {product.popular && !isOutOfStock && (
-                                <Badge className="absolute top-2 right-2 bg-red-600 text-white text-xs">POPULAR</Badge>
-                              )}
-                              {isOutOfStock && (
-                                <div className="absolute inset-0 bg-black/70 rounded-lg flex items-center justify-center">
-                                  <Badge variant="destructive" className="text-base px-2 py-1">
-                                    AGOTADO
-                                  </Badge>
-                                </div>
-                              )}
-                            </div>
-
-                            <div className="space-y-2">
-                              <h3 className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors text-center uppercase">
-                                {product.name}
-                              </h3>
-                              <p className="text-gray-400 text-xs text-center">{product.description}</p>
-                              <div className="flex items-center justify-between">
-                                <span className="text-lg font-bold text-red-500">${product.price.toLocaleString()}</span>
-                                <div className="flex gap-2">
-                                  <Button
-                                    size="sm"
-                                    onClick={() => handleOrderProduct(product.name, product.stock)}
-                                    disabled={isOutOfStock}
-                                    className={`font-bold ${isOutOfStock
-                                        ? "bg-gray-600 text-gray-400 cursor-not-allowed"
-                                        : "bg-red-600 hover:bg-red-700 text-white"
-                                      }`}
-                                  >
-                                    {isOutOfStock ? "AGOTADO" : "Pedir"}
-                                  </Button>
-                                </div>
+          <div className="mb-12 bg-gray-800 rounded-2xl shadow-lg p-6 border border-yellow-400/30">
+            <h3 className="text-2xl font-extrabold text-yellow-400 mb-4 text-center tracking-widest uppercase drop-shadow">
+              {activeCategory}
+            </h3>
+            {filteredProducts.length === 0 ? (
+              <p className="text-center text-gray-400">No se encontraron productos.</p>
+            ) : (
+              <div className="overflow-x-auto pb-4">
+                <div className="flex gap-4 min-w-[220px] justify-center">
+                  {filteredProducts.map((product) => {
+                    const isOutOfStock = product.stock === "out_of_stock"
+                    return (
+                      <Card
+                        key={product.id}
+                        className={`min-w-[220px] max-w-[220px] bg-black border-red-600/20 hover:border-red-600/40 transition-all duration-300 group ${isOutOfStock ? "opacity-75" : ""
+                          }`}
+                      >
+                        <CardContent className="p-4">
+                          <div className="relative mb-3">
+                            <Image
+                              src={product.image || "/placeholder.svg"}
+                              alt={product.name}
+                              width={180}
+                              height={180}
+                              className="w-full h-32 object-cover rounded-lg"
+                            />
+                            {product.popular && !isOutOfStock && (
+                              <Badge className="absolute top-2 right-2 bg-red-600 text-white text-xs">POPULAR</Badge>
+                            )}
+                            {isOutOfStock && (
+                              <div className="absolute inset-0 bg-black/70 rounded-lg flex items-center justify-center">
+                                <Badge variant="destructive" className="text-base px-2 py-1">
+                                  AGOTADO
+                                </Badge>
+                              </div>
+                            )}
+                          </div>
+                          <div className="space-y-2">
+                            <h3 className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors text-center uppercase">
+                              {product.name}
+                            </h3>
+                            <p className="text-gray-400 text-xs text-center">{product.description}</p>
+                            <div className="flex items-center justify-between">
+                              <span className="text-lg font-bold text-red-500">${product.price.toLocaleString()}</span>
+                              <div className="flex gap-2">
+                                <Button
+                                  size="sm"
+                                  onClick={() => handleOrderProduct(product.name, product.stock)}
+                                  disabled={isOutOfStock}
+                                  className={`font-bold ${isOutOfStock
+                                    ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                                    : "bg-red-600 hover:bg-red-700 text-white"
+                                    }`}
+                                >
+                                  {isOutOfStock ? "AGOTADO" : "Pedir"}
+                                </Button>
                               </div>
                             </div>
-                          </CardContent>
-                        </Card>
-                      )
-                    })}
-                  </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    )
+                  })}
                 </div>
               </div>
-            )
-          })()
+            )}
+          </div>
         )}
       </div>
     </section>

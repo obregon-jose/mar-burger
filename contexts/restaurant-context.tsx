@@ -536,24 +536,24 @@ const initialData: RestaurantData = {
   shoppingCarts: {
     enabled: true,
     items: [
-      {
-        id: 1,
-        productId: 1,
-        quantity: 3,
-        note: "Sin cebolla",
-        image: "/images/h.png?height=300&width=300",
-        name: "Hamburguesa Clásica",
-        price: 18000,
-      },
-      {
-        id: 2,
-        productId: 5,
-        quantity: 1,
-        note: "Con extra sal",
-        image: "/images/h.png?height=300&width=300",
-        name: "Papas Fritas",
-        price: 8000,
-      },
+      // {
+      //   id: 1,
+      //   productId: 1,
+      //   quantity: 3,
+      //   note: "Sin cebolla",
+      //   image: "/images/h.png?height=300&width=300",
+      //   name: "Hamburguesa Clásica",
+      //   price: 18000,
+      // },
+      // {
+      //   id: 2,
+      //   productId: 5,
+      //   quantity: 1,
+      //   note: "Con extra sal",
+      //   image: "/images/h.png?height=300&width=300",
+      //   name: "Papas Fritas",
+      //   price: 8000,
+      // },
     ],
   }
 

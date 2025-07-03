@@ -22,7 +22,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-yellow-400/20" />
       </div>
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 py-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
             <div className="space-y-4">
