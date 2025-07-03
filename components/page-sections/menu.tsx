@@ -34,13 +34,11 @@ export function Menu() {
     <section id="menu" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center mb-12">
-          {/* <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 animate-pulse-">
             <span className="text-yellow-400">NUESTRO</span>
             <span className="text-white"> MENÚ</span>
-          </h2> */}
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 text-center tracking-widest uppercase bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-lg animate-pulse">
-            NUESTRO MENÚ
           </h2>
+          
           <p className="text-gray-300 text-lg max-w-2xl mx-auto text-center">
             Descubre nuestras deliciosas opciones preparadas con ingredientes frescos y de la mejor calidad
           </p>
@@ -86,14 +84,22 @@ export function Menu() {
                 product.description?.toLowerCase().includes(searchTerm.toLowerCase())
               )
             if (filteredProducts.length === 0) return null
+
             return (
               <div
                 key={cat}
                 className="mb-12 bg-gray-800 rounded-2xl shadow-lg p-6 border border-yellow-400/30"
               >
-                <div className="flex flex-col items-center mb-4 animate-pulse">
+                {/* <div className="flex flex-col items-center mb-4 animate-pulse-">
                   <h3 className="text-2xl font-extrabold text-yellow-400 text-center tracking-widest uppercase drop-shadow ">
                     {cat}
+                  </h3>
+                  <span className="block w-16 h-1 bg-yellow-400 rounded-full mt-1" />
+                </div> */}
+
+                <div className="flex flex-col items-center mb-4 animate-pulse">
+                  <h3 className="text-2xl font-extrabold text-center tracking-widest uppercase bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-lg">
+                  {cat}
                   </h3>
                   <span className="block w-16 h-1 bg-yellow-400 rounded-full mt-1" />
                 </div>

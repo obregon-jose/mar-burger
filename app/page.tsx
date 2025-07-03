@@ -24,7 +24,7 @@ export default function HomePage() {
         <main>
           <Hero />
           <Menu />
-          {/* <Promotions /> */}
+          <Promotions />
           {/* <PaymentMethod /> */}
           {/* <Location /> */}
           {/* <Contact /> */}

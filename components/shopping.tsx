@@ -19,7 +19,7 @@ export function Shopping
             {data.shoppingCarts.items.length > 0 && !cartOpen && (
                 <div className="fixed bottom-6 right-6 z-50 animate-bounce">
                     <Button
-                        className="w-14 h-14 rounded-full bg-yellow-400 hover:bg-yellow-500 text-black shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 relative"
+                        className="w-14 h-14 rounded-full bg-yellow-400 animate-pulse hover:bg-yellow-500 text-black shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 relative"
                         onClick={() => setCartOpen(true)}
                     >
                         <ShoppingCartIcon className="w-8 h-8" />
