@@ -198,8 +198,8 @@ const initialData: RestaurantData = {
   products: [
     {
       id: 1,
-      name: "Hamburguesa de res sencilla",
-      description: "Carne de res, lechuga, tomate, cebolla, queso y salsas",
+      name: "Res sencilla",
+      description: "",
       price: 0, //
       image: "/images/h.png?height=300&width=300",
       category: "hamburguesas",
@@ -209,8 +209,8 @@ const initialData: RestaurantData = {
     },
     {
       id: 2,
-      name: "Hamburguesa de res doble carne",
-      description: "Carne de res, ", //
+      name: "Res doble",
+      description: "", //
       price: 0, //
       image: "/images/h.png?height=300&width=300",
       category: "hamburguesas",
@@ -220,7 +220,7 @@ const initialData: RestaurantData = {
     },
     {
       id: 4,
-      name: "Hamburguesa de pollo sencilla",
+      name: "Pollo sencilla",
       description: "", //
       price: 0,
       image: "/images/h.png?height=300&width=300",
@@ -231,7 +231,7 @@ const initialData: RestaurantData = {
     },
     {
       id: 5,
-      name: "Hamburguesa de pollo doble",
+      name: "Pollo doble",
       description: "", //
       price: 0,
       image: "/images/h.png?height=300&width=300",
@@ -242,7 +242,7 @@ const initialData: RestaurantData = {
     },
     {
       id: 6,
-      name: "Hamburguesa mixta",
+      name: "Mixta",
       description: "", //
       price: 0,
       image: "/images/h.png?height=300&width=300",
