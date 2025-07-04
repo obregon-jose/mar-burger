@@ -70,7 +70,7 @@ export function Hero() {
           </div>
 
           {/* Imagen principal - Solo visible en desktop (lg+) */}
-          <div className="hidden lg:block relative">
+          <div className="hidden lg:block relative p-15 pt-15">
             <div className="relative z-10">
               <Image
                 src={data.restaurant.heroImage}

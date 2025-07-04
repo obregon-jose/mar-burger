@@ -101,7 +101,7 @@ export function Menu() {
                             : "bg-red-600 hover:bg-red-700 text-white"
                             }`}
                         >
-                          {isOutOfStock ? "AGOTADO" : "Pedir"}
+                          {isOutOfStock ? "Agotado" : "Pedir"}
                         </Button>
                       </div>
                     </div>
@@ -130,21 +130,53 @@ export function Menu() {
 
         {/* Filtros */}
         <div>
-          {/* Categorías */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {allCategories.map((cat) => (
-              <Button
-                key={cat}
-                variant={activeCategory === cat ? "default" : "outline"}
-                className={`font-bold px-6 py-2 rounded-md ${activeCategory === cat
-                  ? "bg-yellow-400 text-black"
-                  : "bg-gray-800 text-gray-200 hover:bg-yellow-400 hover:text-black"
-                  }`}
-                onClick={() => setActiveCategory(cat)}
-              >
-                {cat}
-              </Button>
-            ))}
+          <div className="mb-5">
+            {/* Desktop: horizontal scrollable buttons */}
+            <div className="hidden sm:flex flex-wrap justify-center gap-3">
+              {allCategories.map((cat) => (
+                <Button
+                  key={cat}
+                  variant={activeCategory === cat ? "default" : "outline"}
+                  className={`font-bold px-6 py-2 rounded-md ${activeCategory === cat
+                    ? "bg-yellow-400 text-black"
+                    : "bg-gray-800 text-gray-200 hover:bg-yellow-400 hover:text-black"
+                    }`}
+                  onClick={() => setActiveCategory(cat)}
+                >
+                  {cat}
+                </Button>
+              ))}
+            </div>
+            {/* Mobile: select dropdown */}
+            <div className="sm:hidden flex justify-center">
+              <div className="relative w-full max-w-md">
+                <select
+                  value={activeCategory}
+                  onChange={(e) => setActiveCategory(e.target.value)}
+                  className="block w-full px-4 py-2 rounded-md border border-yellow-400 bg-gray-800 text-gray-200 font-medium shadow focus:outline-none focus:ring-2 focus:ring-gray-400 appearance-none"
+                  style={{
+                    maxWidth: "100vw",
+                  }}
+                >
+                  {allCategories.map((cat) => (
+                    <option key={cat} value={cat} className="text-white">
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                  <svg
+                    className="h-5 w-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Búsqueda */}
@@ -161,7 +193,7 @@ export function Menu() {
 
         {/* Productos */}
         {filteredProducts.length === 0 ? (
-          
+
           <div className="mb-12 bg-black rounded-2xl shadow-lg p-6 border border-red-600/20">
             <p className="text-center text-base font-bold text-white transition-colors">
               No hay productos disponibles para esta búsqueda.

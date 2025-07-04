@@ -154,10 +154,10 @@ const initialData: RestaurantData = {
     sunday: { open: "12:00", close: "22:00", enabled: true },
   },
   deliveryZones: [
-    { id: 1, name: "Centro", price: 3000, time: "20-30 min", enabled: true },
-    { id: 2, name: "Norte", price: 4000, time: "25-35 min", enabled: true },
-    { id: 3, name: "Sur", price: 4000, time: "25-35 min", enabled: true },
-    { id: 4, name: "Oeste", price: 5000, time: "30-40 min", enabled: true },
+    { id: 1, name: "Centro", price: 0, time: "20-30 min", enabled: true },
+    { id: 2, name: "Norte", price: 4000, time: "30-40 min", enabled: true },
+    { id: 3, name: "Sur", price: 0, time: "15-25 min", enabled: true },
+    { id: 4, name: "Oeste", price: 2000, time: "25-35 min", enabled: true },
   ],
   paymentMethods: [
     {
@@ -241,7 +241,7 @@ const initialData: RestaurantData = {
       price: 0, //
       image: "/images/h2.png?height=300&width=300",
       category: "hamburguesas",
-      popular: false,
+      popular: true,
       enabled: true,
       stock: "available",
     },
@@ -545,14 +545,16 @@ const initialData: RestaurantData = {
     },
   ],
 
-  promotions: [
+  promotions: [ //analisar que es lo que trae la promocion
     {
       id: 1,
       productId: 1,
-      promotionPrice: 15000,
+      title: "2x1 EN HAMBURGUESAS",
+      description: "Compra una hamburguesa doble y llévate otra gratis",
+      promotionPrice: 2000,
       discountPercent: 17,
-      startDate: "2024-01-01",
-      endDate: "2024-12-31",
+      startDate: "2025-07-01",
+      endDate: "2025-07-31",
       enabled: true,
       featured: true,
       isFlashSale: false,
