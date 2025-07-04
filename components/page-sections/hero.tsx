@@ -11,10 +11,7 @@ export function Hero() {
   const { data } = useRestaurant()
 
   return (
-    <section
-      id="inicio"
-      className="relative bg-black flex items-center overflow-hidden pt-20 xl:pt-0"
-    >
+    <section id="inicio" className="relative bg-black flex items-center overflow-hidden pt-20 xl:pt-0">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-yellow-400/20" />
       </div>
@@ -40,21 +37,17 @@ export function Hero() {
                   </h1>
                   <p className="text-lg sm:text-xl text-gray-300 max-w-lg mt-4">{data.restaurant.description}</p>
                 </div>
-
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">            
-              
+            <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
                   onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
+                  className="bg-gradient-to-r space-x-2 from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
                 >
-                  <span className="flex items-center">
-                    <WhatsAppIcon className="w-12 h-12 text-white" />
-                  </span>
                   PEDIR AHORA
+                  <WhatsAppIcon className="w-12 h-12 text-white" />
                 </Button>
             </div>
 

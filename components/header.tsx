@@ -41,8 +41,8 @@ export function Header() {
                 />
               </div>
               <div className="sm:block">
-                <span className="text-yellow-400 font-bold text-xl">MAR</span>
-                <span className="text-white font-bold text-xl">BURGER</span>
+                <span className="text-yellow-400 font-extrabold text-2xl ">MAR</span>
+                <span className="text-white font-extrabold text-2xl ">BURGER</span>
               </div>
             </Link>
 
@@ -63,16 +63,12 @@ export function Header() {
                 <WhatsAppIcon className="w-6 h-6 text-red-500" />
                 <span className="text-sm">{data.restaurant.phone}</span>
               </div>
-              <Button onClick={() => sendWhatsAppMessage(data.restaurant.phone)} className="bg-red-600 hover:bg-red-700 text-white font-bold">
+
+              <Button
+                onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold">
                 PEDIR AHORA
               </Button>
-              {/* <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">
-          <Link href="/auth/login" className="flex items-center space-x-2">
-            <LucidePersonStanding />
-
-          </Link>
-
-          </Button> */}
             </div>
 
             {/* MOBILE */}
@@ -82,6 +78,7 @@ export function Header() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
+
               <SheetContent side="right" className="bg-black border-red-600/20">
                 <div className="flex flex-col space-y-6 mt-8">
                   {navItems.map((item) => (
@@ -94,9 +91,11 @@ export function Header() {
                       {item.label}
                     </Link>
                   ))}
-                  <Button onClick={() => sendWhatsAppMessage(data.restaurant.phone)} className="bg-red-600 hover:bg-red-700 text-white font-bold flex items-center space-x-2">
-                    <WhatsAppIcon className="w-6 h-6 text-white" />
-                    <span>PEDIR AHORA</span>
+                  <Button 
+                  onClick={() => sendWhatsAppMessage(data.restaurant.phone)} 
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold flex items-center space-x-2">
+                    PEDIR AHORA
+                    <WhatsAppIcon className="w-8 h-8 text-white" />
                   </Button>
                 </div>
               </SheetContent>

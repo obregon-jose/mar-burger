@@ -24,7 +24,7 @@ export function FloatingElements() {
       "🍖", "🥒", "🧅", "🌶️", "🍤", "🍗", "🥩", "🥪", "🌮","🍳", 
       "🧆", "🍺", "🥕", "🥃", "🍿"]
 
-    const initialElements: FloatingElement[] = Array.from({ length: 30 }, (_, i) => ({
+    const initialElements: FloatingElement[] = Array.from({ length: 20 }, (_, i) => ({
       id: i,
       icon: foodIcons[i % foodIcons.length],
       x: Math.random() * 100,

@@ -1,127 +1,128 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { createContext, useContext, useState, useEffect } from "react"
+import type React from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 interface Product {
-  id: number
-  name: string
-  description: string
-  price: number
-  image: string
-  category: string
-  popular: boolean
-  enabled: boolean
-  stock: "available" | "out_of_stock"
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
+  popular: boolean;
+  enabled: boolean;
+  stock: "available" | "out_of_stock";
 }
 
 interface Promotion {
-  id: number
-  productId: number
-  title?: string 
-  description?: string 
-  image?: string 
-  promotionPrice: number 
-  discountPercent: number
-  startDate: string
-  endDate: string
-  enabled: boolean
-  featured: boolean
-  isFlashSale: boolean 
-  flashDurationMinutes?: number 
+  id: number;
+  productId: number;
+  title?: string;
+  description?: string;
+  image?: string;
+  promotionPrice: number;
+  discountPercent: number;
+  startDate: string;
+  endDate: string;
+  enabled: boolean;
+  featured: boolean;
+  isFlashSale: boolean;
+  flashDurationMinutes?: number;
 }
 
 interface Category {
-  id: string
-  name: string
-  icon: string
-  enabled: boolean
-  order: number
+  id: string;
+  name: string;
+  icon: string;
+  enabled: boolean;
+  order: number;
 }
 
 interface PaymentMethod {
-  id: number
-  name: string
-  icon: string
-  description: string
-  enabled: boolean
+  id: number;
+  name: string;
+  icon: string;
+  description: string;
+  enabled: boolean;
 }
 
 interface DeliveryZone {
-  id: number
-  name: string
-  price: number
-  time: string
-  enabled: boolean
+  id: number;
+  name: string;
+  price: number;
+  time: string;
+  enabled: boolean;
 }
 
 interface Hours {
   [key: string]: {
-    open: string
-    close: string
-    enabled: boolean
-  }
+    open: string;
+    close: string;
+    enabled: boolean;
+  };
 }
 
-interface shoppingCart{
-  enabled: boolean,
+interface shoppingCart {
+  enabled: boolean;
   items: {
-    id: number
-    productId: number
-    quantity: number
-    note?: string
-    image?: string
-    name?: string
-    price?: number
-  }[]
+    id: number;
+    productId: number;
+    quantity: number;
+    note?: string;
+    image?: string;
+    name?: string;
+    price?: number;
+  }[];
 }
 
 interface RestaurantData {
   restaurant: {
-    name: string
-    slug: string
-    logo: string
-    heroImage: string
-    heroSlogan: string
-    description: string
-    phone: string
-    instagram: string
-    address: string
-    enabled: boolean
-  }
-  products: Product[]
-  promotions: Promotion[]
-  categories: Category[]
-  paymentMethods: PaymentMethod[]
-  deliveryZones: DeliveryZone[]
-  hours: Hours
+    name: string;
+    slug: string;
+    logo: string;
+    heroImage: string;
+    heroSlogan: string;
+    description: string;
+    phone: string;
+    instagram: string;
+    address: string;
+    enabled: boolean;
+  };
+  products: Product[];
+  promotions: Promotion[];
+  categories: Category[];
+  paymentMethods: PaymentMethod[];
+  deliveryZones: DeliveryZone[];
+  hours: Hours;
   stats: {
-    happyCustomers: number
-    averageTime: string
-    rating: number
-    enabled: boolean
-  }
+    happyCustomers: number;
+    averageTime: string;
+    rating: number;
+    enabled: boolean;
+  };
 
-  shoppingCarts: shoppingCart
-
+  shoppingCarts: shoppingCart;
 }
 
 interface RestaurantContextType {
-  data: RestaurantData
-  updateData: (newData: RestaurantData) => void
-  addProduct: (product: Omit<Product, "id">) => void
-  updateProduct: (id: number, product: Partial<Product>) => void
-  deleteProduct: (id: number) => void
-  addPromotion: (promotion: Omit<Promotion, "id">) => void
-  updatePromotion: (id: number, promotion: Partial<Promotion>) => void
-  deletePromotion: (id: number) => void
-  addCategory: (category: Omit<Category, "id">) => void
-  updateCategory: (id: string, category: Partial<Category>) => void
-  deleteCategory: (id: string) => void
-  loading: boolean
+  data: RestaurantData;
+  updateData: (newData: RestaurantData) => void;
+  addProduct: (product: Omit<Product, "id">) => void;
+  updateProduct: (id: number, product: Partial<Product>) => void;
+  deleteProduct: (id: number) => void;
+  addPromotion: (promotion: Omit<Promotion, "id">) => void;
+  updatePromotion: (id: number, promotion: Partial<Promotion>) => void;
+  deletePromotion: (id: number) => void;
+  addCategory: (category: Omit<Category, "id">) => void;
+  updateCategory: (id: string, category: Partial<Category>) => void;
+  deleteCategory: (id: string) => void;
+  loading: boolean;
 }
 
-const RestaurantContext = createContext<RestaurantContextType | undefined>(undefined)
+const RestaurantContext = createContext<RestaurantContextType | undefined>(
+  undefined
+);
 
 const initialData: RestaurantData = {
   restaurant: {
@@ -130,11 +131,12 @@ const initialData: RestaurantData = {
     logo: "/images/logo.png",
     heroImage: "/images/h.png",
     heroSlogan: "¡Sabor que conquista el mar y la ciudad!",
-    description: "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
+    description:
+      "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
     phone: "3205521623",
     instagram: "@marburgeroficial",
     address: "Carrera 29 #66-05, Ciudad 2000, Cali", //corregir
-    enabled: true
+    enabled: true,
   },
   stats: {
     happyCustomers: 100,
@@ -189,11 +191,47 @@ const initialData: RestaurantData = {
   ],
 
   categories: [
-    { id: "hamburguesas", name: "Hamburguesas", icon: "🍔", enabled: true, order: 1 },
-    // { id: "acompañamientos", name: "Acompañamientos", icon: "🍟", enabled: true, order: 2 }, 
-    { id: "bebidas", name: "Bebidas", icon: "🥤", enabled: true, order: 3 },
-    { id: "mariscos", name: "Mariscos", icon: "🍤", enabled: true, order: 4 },
-    { id: "asados", name: "Asados", icon: "🥩", enabled: true, order: 5 },
+    {
+      id: "hamburguesas",
+      order: 1,
+      name: "Hamburguesas",
+      icon: "🍔",
+      enabled: true,
+    },
+    {
+      id: "acompañamientos",
+      order: 2,
+      name: "Acompañamientos",
+      icon: "🍟",
+      enabled: true,
+    },
+    { 
+      id: "bebidas", 
+      order: 3, 
+      name: "Bebidas", 
+      icon: "🥤", 
+      enabled: true },
+    { 
+      id: "mariscos", 
+      order: 4, 
+      name: "Mariscos", 
+      icon: "🍤", 
+      enabled: true 
+    },
+    { 
+      id: "asados", 
+      order: 5, 
+      name: "Asados", 
+      icon: "🥩", 
+      enabled: true 
+    },
+    { 
+      id: "postes", 
+      order: 6, 
+      name: "Postres", 
+      icon: "🥩🥩", 
+      enabled: false 
+    },
   ],
   products: [
     {
@@ -201,7 +239,7 @@ const initialData: RestaurantData = {
       name: "Res sencilla",
       description: "",
       price: 0, //
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "hamburguesas",
       popular: false,
       enabled: true,
@@ -212,7 +250,7 @@ const initialData: RestaurantData = {
       name: "Res doble",
       description: "", //
       price: 0, //
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "hamburguesas",
       popular: false,
       enabled: true,
@@ -223,7 +261,7 @@ const initialData: RestaurantData = {
       name: "Pollo sencilla",
       description: "", //
       price: 0,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "hamburguesas",
       popular: false,
       enabled: true,
@@ -234,7 +272,7 @@ const initialData: RestaurantData = {
       name: "Pollo doble",
       description: "", //
       price: 0,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "hamburguesas",
       popular: false,
       enabled: true,
@@ -245,7 +283,7 @@ const initialData: RestaurantData = {
       name: "Mixta",
       description: "", //
       price: 0,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "hamburguesas",
       popular: false,
       enabled: true,
@@ -256,7 +294,7 @@ const initialData: RestaurantData = {
       name: "Cazuela de mariscos",
       description: "",
       price: 35000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "mariscos",
       popular: false,
       enabled: true,
@@ -267,7 +305,7 @@ const initialData: RestaurantData = {
       name: "Camaron apanado",
       description: "",
       price: 30000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "mariscos",
       popular: false,
       enabled: true,
@@ -278,7 +316,7 @@ const initialData: RestaurantData = {
       name: "Camaron al ajillo",
       description: "",
       price: 0,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "mariscos",
       popular: false,
       enabled: true,
@@ -289,7 +327,7 @@ const initialData: RestaurantData = {
       name: "Ceviche de camaron",
       description: "",
       price: 30000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "mariscos",
       popular: false,
       enabled: true,
@@ -300,7 +338,7 @@ const initialData: RestaurantData = {
       name: "Tripletazo de mariscos",
       description: "",
       price: 35000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "mariscos",
       popular: false,
       enabled: true,
@@ -311,18 +349,19 @@ const initialData: RestaurantData = {
       name: "Arroz a la marinela",
       description: "",
       price: 30000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "mariscos",
       popular: false,
       enabled: true,
       stock: "available",
     },
-    { //mandar a la secion de promociones
+    {
+      //mandar a la secion de promociones
       id: 13,
       name: "Arroz de camarones 2x1",
       description: "",
       price: 50000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "mariscos",
       popular: false,
       enabled: true,
@@ -333,7 +372,7 @@ const initialData: RestaurantData = {
       name: "Filete de res",
       description: "",
       price: 18000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -344,7 +383,7 @@ const initialData: RestaurantData = {
       name: "Filete de pollo",
       description: "",
       price: 18000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -355,7 +394,7 @@ const initialData: RestaurantData = {
       name: "Filete de cerdo",
       description: "",
       price: 18000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -366,7 +405,7 @@ const initialData: RestaurantData = {
       name: "Lomo de cerdo",
       description: "",
       price: 20000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -377,7 +416,7 @@ const initialData: RestaurantData = {
       name: "Punta de ancaa",
       description: "",
       price: 20000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -388,7 +427,7 @@ const initialData: RestaurantData = {
       name: "Chuleta de pollo",
       description: "",
       price: 20000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -399,7 +438,7 @@ const initialData: RestaurantData = {
       name: "Chuleta de cerdo",
       description: "",
       price: 20000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -410,7 +449,7 @@ const initialData: RestaurantData = {
       name: "Costillas a la BBQ",
       description: "",
       price: 25000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -421,7 +460,7 @@ const initialData: RestaurantData = {
       name: "Picada personal",
       description: "",
       price: 25000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -432,7 +471,7 @@ const initialData: RestaurantData = {
       name: "Picada Grande",
       description: "",
       price: 50000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "asados",
       popular: false,
       enabled: true,
@@ -443,7 +482,7 @@ const initialData: RestaurantData = {
       name: "Jugo de borojo en leche",
       description: "",
       price: 8000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "bebidas",
       popular: false,
       enabled: true,
@@ -454,7 +493,7 @@ const initialData: RestaurantData = {
       name: "Jugo de mango en leche",
       description: "",
       price: 8000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "bebidas",
       popular: false,
       enabled: true,
@@ -465,7 +504,7 @@ const initialData: RestaurantData = {
       name: "Jugo de mora en leche",
       description: "",
       price: 8000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "bebidas",
       popular: false,
       enabled: true,
@@ -476,7 +515,7 @@ const initialData: RestaurantData = {
       name: "Jugo de tomate de arbol en leche",
       description: "",
       price: 8000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "bebidas",
       popular: false,
       enabled: true,
@@ -487,7 +526,7 @@ const initialData: RestaurantData = {
       name: "Jugo de guayaba en leche",
       description: "",
       price: 8000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "bebidas",
       popular: false,
       enabled: true,
@@ -498,7 +537,7 @@ const initialData: RestaurantData = {
       name: "Limonada",
       description: "",
       price: 6000,
-      image: "/images/h.png?height=300&width=300",
+      image: "/images/h2.png?height=300&width=300",
       category: "bebidas",
       popular: false,
       enabled: true,
@@ -541,7 +580,7 @@ const initialData: RestaurantData = {
       //   productId: 1,
       //   quantity: 3,
       //   note: "Sin cebolla",
-      //   image: "/images/h.png?height=300&width=300",
+      //   image: "/images/h2.png?height=300&width=300",
       //   name: "Hamburguesa Clásica",
       //   price: 18000,
       // },
@@ -550,29 +589,29 @@ const initialData: RestaurantData = {
       //   productId: 5,
       //   quantity: 1,
       //   note: "Con extra sal",
-      //   image: "/images/h.png?height=300&width=300",
+      //   image: "/images/h2.png?height=300&width=300",
       //   name: "Papas Fritas",
       //   price: 8000,
       // },
     ],
-  }
+  },
+};
 
-
-  
-
-}
-
-export function RestaurantProvider({ children }: { children: React.ReactNode }) {
-  const [data, setData] = useState<RestaurantData>(initialData)
-  const [loading, setLoading] = useState(false)
-  const [mounted, setMounted] = useState(false)
+export function RestaurantProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [data, setData] = useState<RestaurantData>(initialData);
+  const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-    const savedData = localStorage.getItem("restaurant-data")
+    setMounted(true);
+    const savedData = localStorage.getItem("restaurant-data");
     if (savedData) {
       try {
-        const parsedData = JSON.parse(savedData)
+        const parsedData = JSON.parse(savedData);
         // Migrar datos antiguos si no tienen las nuevas propiedades
         if (parsedData.promotions) {
           parsedData.promotions = parsedData.promotions.map((promo: any) => ({
@@ -580,113 +619,120 @@ export function RestaurantProvider({ children }: { children: React.ReactNode }) 
             promotionPrice:
               promo.promotionPrice || promo.discountPercent
                 ? Math.round(
-                    parsedData.products.find((p: any) => p.id === promo.productId)?.price *
-                      (1 - promo.discountPercent / 100),
+                    parsedData.products.find(
+                      (p: any) => p.id === promo.productId
+                    )?.price *
+                      (1 - promo.discountPercent / 100)
                   )
-                : parsedData.products.find((p: any) => p.id === promo.productId)?.price || 0,
+                : parsedData.products.find((p: any) => p.id === promo.productId)
+                    ?.price || 0,
             isFlashSale: promo.isFlashSale || false,
-          }))
+          }));
         }
         if (!parsedData.categories) {
-          parsedData.categories = initialData.categories
+          parsedData.categories = initialData.categories;
         }
-        setData(parsedData)
+        setData(parsedData);
       } catch (error) {
-        console.error("Error loading saved data:", error)
+        console.error("Error loading saved data:", error);
       }
     }
-  }, [])
+  }, []);
 
   const updateData = (newData: RestaurantData) => {
-    setData(newData)
+    setData(newData);
     if (mounted) {
-      localStorage.setItem("restaurant-data", JSON.stringify(newData))
+      localStorage.setItem("restaurant-data", JSON.stringify(newData));
     }
-  }
+  };
 
   const addProduct = (product: Omit<Product, "id">) => {
-    const newId = Math.max(...data.products.map((p) => p.id), 0) + 1
-    const newProduct = { ...product, id: newId }
+    const newId = Math.max(...data.products.map((p) => p.id), 0) + 1;
+    const newProduct = { ...product, id: newId };
     const updatedData = {
       ...data,
       products: [...data.products, newProduct],
-    }
-    updateData(updatedData)
-  }
+    };
+    updateData(updatedData);
+  };
 
   const updateProduct = (id: number, productUpdate: Partial<Product>) => {
     const updatedData = {
       ...data,
-      products: data.products.map((product) => (product.id === id ? { ...product, ...productUpdate } : product)),
-    }
-    updateData(updatedData)
-  }
+      products: data.products.map((product) =>
+        product.id === id ? { ...product, ...productUpdate } : product
+      ),
+    };
+    updateData(updatedData);
+  };
 
   const deleteProduct = (id: number) => {
     const updatedData = {
       ...data,
       products: data.products.filter((product) => product.id !== id),
-      promotions: data.promotions.filter((promotion) => promotion.productId !== id),
-    }
-    updateData(updatedData)
-  }
+      promotions: data.promotions.filter(
+        (promotion) => promotion.productId !== id
+      ),
+    };
+    updateData(updatedData);
+  };
 
   const addPromotion = (promotion: Omit<Promotion, "id">) => {
-    const newId = Math.max(...data.promotions.map((p) => p.id), 0) + 1
-    const newPromotion = { ...promotion, id: newId }
+    const newId = Math.max(...data.promotions.map((p) => p.id), 0) + 1;
+    const newPromotion = { ...promotion, id: newId };
     const updatedData = {
       ...data,
       promotions: [...data.promotions, newPromotion],
-    }
-    updateData(updatedData)
-  }
+    };
+    updateData(updatedData);
+  };
 
   const updatePromotion = (id: number, promotionUpdate: Partial<Promotion>) => {
     const updatedData = {
       ...data,
       promotions: data.promotions.map((promotion) =>
-        promotion.id === id ? { ...promotion, ...promotionUpdate } : promotion,
+        promotion.id === id ? { ...promotion, ...promotionUpdate } : promotion
       ),
-    }
-    updateData(updatedData)
-  }
+    };
+    updateData(updatedData);
+  };
 
   const deletePromotion = (id: number) => {
     const updatedData = {
       ...data,
       promotions: data.promotions.filter((promotion) => promotion.id !== id),
-    }
-    updateData(updatedData)
-  }
+    };
+    updateData(updatedData);
+  };
 
   const addCategory = (category: Omit<Category, "id">) => {
-    const newId = category.name.toLowerCase().replace(/\s+/g, "-")
-    const newCategory = { ...category, id: newId }
+    const newId = category.name.toLowerCase().replace(/\s+/g, "-");
+    const newCategory = { ...category, id: newId };
     const updatedData = {
       ...data,
       categories: [...data.categories, newCategory],
-    }
-    updateData(updatedData)
-  }
+    };
+    updateData(updatedData);
+  };
 
   const updateCategory = (id: string, categoryUpdate: Partial<Category>) => {
     const updatedData = {
       ...data,
       categories: data.categories.map((category) =>
-        category.id === id ? { ...category, ...categoryUpdate } : category,
+        category.id === id ? { ...category, ...categoryUpdate } : category
       ),
-    }
-    updateData(updatedData)
-  }
+    };
+    updateData(updatedData);
+  };
 
   const deleteCategory = (id: string) => {
     const updatedData = {
       ...data,
       categories: data.categories.filter((category) => category.id !== id),
       products: data.products.filter((product) => product.category !== id),
-    }
-    updateData(updatedData)
-  }
+    };
+    updateData(updatedData);
+  };
 
   return (
     <RestaurantContext.Provider
@@ -707,13 +753,13 @@ export function RestaurantProvider({ children }: { children: React.ReactNode }) 
     >
       {children}
     </RestaurantContext.Provider>
-  )
+  );
 }
 
 export function useRestaurant() {
-  const context = useContext(RestaurantContext)
+  const context = useContext(RestaurantContext);
   if (!context) {
-    throw new Error("useRestaurant must be used within a RestaurantProvider")
+    throw new Error("useRestaurant must be used within a RestaurantProvider");
   }
-  return context
+  return context;
 }
