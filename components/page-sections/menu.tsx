@@ -116,14 +116,14 @@ export function Menu() {
   }
 
   return (
-    <section id="menu" className="py-15 bg-gray-900">
+    <section id="menu" className="py-10 bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center mb-12">
+        <div className="flex flex-col items-center mb-12 text-center">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 animate-pulse-">
             <span className="text-yellow-400">NUESTROS</span>
             <span className="text-white"> PLATOS</span>
           </h2>
-          <p className="text-gray-300 text-lg max-w-4xl mx-auto text-center">
+          <p className="text-gray-300 text-lg max-w-4xl mx-auto">
             Descubre nuestras deliciosas opciones preparadas con ingredientes frescos y de la mejor calidad
           </p>
         </div>

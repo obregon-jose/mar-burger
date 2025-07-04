@@ -5,18 +5,21 @@ import { Button } from "@/components/ui/button"
 import { Star } from "lucide-react"
 import { useRestaurant } from "@/contexts/restaurant-context"
 import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
+import { WhatsAppIcon } from '@/app/icons';
 
 export function Hero() {
   const { data } = useRestaurant()
 
-
   return (
-    <section id="inicio" className="relative lg:min-h-screen  bg-black flex items-center overflow-hidden">
+    <section
+      id="inicio"
+      className="relative bg-black flex items-center overflow-hidden pt-20 xl:pt-0"
+    >
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-yellow-400/20" />
       </div>
 
-      <div className="container mx-auto px-4 py-20- sm:py-20">
+      <div className="container mx-auto px-4 py-10 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
             <div className="space-y-4">
@@ -38,46 +41,21 @@ export function Hero() {
                   <p className="text-lg sm:text-xl text-gray-300 max-w-lg mt-4">{data.restaurant.description}</p>
                 </div>
 
-                {/* Imagen visible solo en tablet (md) y oculta en móvil y desktop */}
-                <div className="hidden md:block lg:hidden mt-6 md:mt-0 flex-shrink-0">
-                  <div className="relative w-48 h-48">
-                    <Image
-                      src={data.restaurant.heroImage}
-                      alt="Hamburguesa Clásica Mar Burger"
-                      width={600}
-                      height={600}
-                      className="w-full h-full object-contain"
-                      priority
-                    />
-                    <div className="absolute -top-4 -right-4 w-16 h-16 bg-red-600/20 rounded-full blur-2xl animate-pulse" />
-                  </div>
-                </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                onClick={() =>
-                  window.open(
-                    `https://maps.google.com/?q=${encodeURIComponent(data.restaurant.address)}`,
-                    "_blank",
-                  )
-                }
-                variant="outline"
-                className="border-black text-black hover:bg-yellow-400 font-bold"
-              >
-                Whatsap
-                CÓMO LLEGAR
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-4">            
               
-              <Button
-                size="lg"
-                onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
-                variant="outline"
-                className="border-2 border-white text-black hover:bg-white hover:text-black font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 transform hover:scale-105"
-              >
-                PEDIR AHORA
-              </Button>
+                <Button
+                  size="lg"
+                  onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
+                >
+                  <span className="flex items-center">
+                    <WhatsAppIcon className="w-12 h-12 text-white" />
+                  </span>
+                  PEDIR AHORA
+                </Button>
             </div>
 
             {data.stats.enabled && (
@@ -104,8 +82,8 @@ export function Hero() {
               <Image
                 src={data.restaurant.heroImage}
                 alt="Hamburguesa Clásica Mar Burger"
-                width={600}
-                height={600}
+                width={500}
+                height={500}
                 className="w-full h-auto object-contain"
                 priority
               />
