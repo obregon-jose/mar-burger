@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     description: "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
     images: ["/images/logo.png"],
   },
+  verification: {
+    google: "SM1h4jU_nI-Z-wSfALsiVmvB6zV0AS7jZFruE0f2MYo",
+  },
 }
 
 export default function RootLayout({
