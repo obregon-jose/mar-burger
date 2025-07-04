@@ -12,13 +12,13 @@ export function PaymentMethod() {
     return (
         <section id="payment" className="py-12 bg-gray-900">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-12 sm:mb-16">
+                <div className="text-center mb-8 sm:mb-12">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
                         <span className="text-yellow-400">MÉTODOS </span>
                         <span className="text-white">DE PAGO</span>
                     </h2>
-                    <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-                        Ofrecemos múltiples opciones de pago para tu comodidad. Elige la que más te guste y disfruta de tu comida sin preocupaciones.
+                    <p className="text-gray-300 text-base sm:text-lg max-w-4xl mx-auto">
+                        Elige el que más te guste y disfruta de tu comida sin preocupaciones.
                     </p>
                 </div>
 

@@ -116,14 +116,14 @@ export function Menu() {
   }
 
   return (
-    <section id="menu" className="py-20 bg-gray-900">
+    <section id="menu" className="py-15 bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 animate-pulse-">
-            <span className="text-yellow-400">NUESTRO</span>
-            <span className="text-white"> MENÚ</span>
+            <span className="text-yellow-400">NUESTROS</span>
+            <span className="text-white"> PLATOS</span>
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto text-center">
+          <p className="text-gray-300 text-lg max-w-4xl mx-auto text-center">
             Descubre nuestras deliciosas opciones preparadas con ingredientes frescos y de la mejor calidad
           </p>
         </div>
@@ -161,6 +161,7 @@ export function Menu() {
 
         {/* Productos */}
         {filteredProducts.length === 0 ? (
+          
           <div className="mb-12 bg-black rounded-2xl shadow-lg p-6 border border-red-600/20">
             <p className="text-center text-base font-bold text-white transition-colors">
               No hay productos disponibles para esta búsqueda.

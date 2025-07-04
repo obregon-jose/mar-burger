@@ -13,7 +13,6 @@ import { Shopping } from "./shopping"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const [cartOpen, setCartOpen] = useState(false)
 
   const { data } = useRestaurant()
 
@@ -41,7 +40,7 @@ export function Header() {
                   priority
                 />
               </div>
-              <div className="hidden sm:block">
+              <div className="sm:block">
                 <span className="text-yellow-400 font-bold text-xl">MAR</span>
                 <span className="text-white font-bold text-xl">BURGER</span>
               </div>
@@ -106,8 +105,8 @@ export function Header() {
         </div>
       </header>
 
-<Shopping />
-
+      {/* Shopping Cart */}
+      <Shopping />
 
     </>
   )

@@ -177,14 +177,14 @@ const initialData: RestaurantData = {
       name: "Daviplata",
       icon: "smartphone",
       description: "Transferencia por Daviplata",
-      enabled: true,
+      enabled: false,
     },
     {
       id: 4,
       name: "Tarjeta",
       icon: "credit-card",
       description: "Tarjeta débito/crédito",
-      enabled: true,
+      enabled: false,
     },
   ],
 

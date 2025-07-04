@@ -6,15 +6,12 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Switch } from "@/components/ui/switch"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { Lock, Settings, TrendingUp, MapPin, CreditCard } from "lucide-react"
+import { Lock } from "lucide-react"
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [credentials, setCredentials] = useState({ username: "", password: "" })
-  const [restaurantData, setRestaurantData] = useState(null)
+
 
   useEffect(() => {
     // Simular carga de datos

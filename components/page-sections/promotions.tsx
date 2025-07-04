@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Percent, ChevronLeft, ChevronRight, Clock, Zap } from "lucide-react"
 import { useRestaurant } from "@/contexts/restaurant-context"
+import Image from "next/image"
 
 // Función para obtener fecha en zona horaria de Colombia
 const getColombianDate = (date?: Date) => {
@@ -137,9 +138,11 @@ export function Promotions() {
                     <div className="grid lg:grid-cols-2 min-h-[400px] sm:min-h-[500px]">
                       {/* Imagen */}
                       <div className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
-                        <img
+                        <Image
                           src={displayImage || "/placeholder.svg"}
                           alt={displayTitle}
+                          width={600}
+                          height={500}
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000"
                         />
 

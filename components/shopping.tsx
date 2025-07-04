@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
+// import Image from "next/image"
 import { ShoppingCartIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRestaurant } from "@/contexts/restaurant-context"
@@ -26,7 +26,10 @@ export function Shopping
                         {/* Badge de cantidad de productos */}
                         {Array.isArray(data.shoppingCarts.items) && data.shoppingCarts.items.length > 0 && (
                             <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center border-2 border-white">
-                                {data.shoppingCarts.items.reduce((acc: number, item: any) => acc + (item.quantity || 1), 0)}
+                                {data.shoppingCarts.items.reduce(
+                                    (acc: number, item: { quantity?: number }) => acc + (item.quantity || 1),
+                                    0
+                                )}
                             </span>
                         )}
                     </Button>
@@ -46,7 +49,7 @@ export function Shopping
 
                         <h2 className="text-2xl font-bold mb-4">Tu Carrito</h2>
 
-                        {data.shoppingCarts.items.map((item: any) => (
+                        {/* {data.shoppingCarts.items.map((item: any) => (
                             <div key={item.id} className="flex items-center mb-4 border-b pb-4">
                                 <Image src={item.image} alt={item.name} width={64} height={64} className="rounded object-cover" />
                                 <div className="ml-4 flex-1">
@@ -56,7 +59,7 @@ export function Shopping
                                 </div>
                                 <span className="font-bold">${item.price.toLocaleString()}</span>
                             </div>
-                        ))}
+                        ))} */}
 
                         <div className="mt-6 text-right">
                             <Button onClick={() => sendWhatsAppMessage(data.restaurant.phone)} className="bg-green-500 text-white">

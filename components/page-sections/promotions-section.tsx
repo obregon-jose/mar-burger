@@ -51,7 +51,7 @@ export function PromotionsSection() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {promotions.map((promo, index) => (
+          {promotions.map((promo) => (
             <Card
               key={promo.id}
               className={`bg-gray-900 border-red-600/20 hover:border-red-600/40 transition-all duration-300 group ${

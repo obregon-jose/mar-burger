@@ -2,37 +2,31 @@
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Star } from "lucide-react"
+import { Star } from "lucide-react"
 import { useRestaurant } from "@/contexts/restaurant-context"
 import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
 
 export function Hero() {
   const { data } = useRestaurant()
 
-  const scrollToMenu = () => {
-    const menuSection = document.getElementById("menu")
-    if (menuSection) {
-      menuSection.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   return (
-    <section id="inicio" className="relative min-h-screen bg-black flex items-center overflow-hidden">
+    <section id="inicio" className="relative lg:min-h-screen  bg-black flex items-center overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-yellow-400/20" />
       </div>
 
-      <div className="container mx-auto px-4 py-10">
+      <div className="container mx-auto px-4 py-20- sm:py-20">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8">
             <div className="space-y-4">
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 flex-wrap sm:flex-nowrap">
                 <div className="flex space-x-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <span className="text-white text-sm">{data.restaurant.heroSlogan}</span>
+                <span className="text-white text-sm break-words xs:whitespace-nowrap">{data.restaurant.heroSlogan}</span>
               </div>
 
               <div className="flex flex-col md:flex-row md:items-center md:space-x-6">
@@ -50,8 +44,8 @@ export function Hero() {
                     <Image
                       src={data.restaurant.heroImage}
                       alt="Hamburguesa Clásica Mar Burger"
-                      width={200}
-                      height={200}
+                      width={600}
+                      height={600}
                       className="w-full h-full object-contain"
                       priority
                     />
@@ -63,13 +57,19 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                size="lg"
-                onClick={scrollToMenu}
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                onClick={() =>
+                  window.open(
+                    `https://maps.google.com/?q=${encodeURIComponent(data.restaurant.address)}`,
+                    "_blank",
+                  )
+                }
+                variant="outline"
+                className="border-black text-black hover:bg-yellow-400 font-bold"
               >
-                VER MENÚ
-                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                Whatsap
+                CÓMO LLEGAR
               </Button>
+              
               <Button
                 size="lg"
                 onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
