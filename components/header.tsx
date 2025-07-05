@@ -20,8 +20,8 @@ export function Header() {
     { href: "#inicio", label: "Inicio" },
     { href: "#menu", label: "Menú" },
     { href: "#promociones", label: "Promociones" },
-    { href: "#ubicacion", label: "Ubicación" },
-    { href: "#contacto", label: "Contacto" },
+    { href: "#ubicacion", label: "Visítanos" },
+    { href: "#contacto", label: "Contáctanos" },
   ]
 
   return (
@@ -41,7 +41,7 @@ export function Header() {
                 />
               </div>
               <div className="sm:block">
-                <span className="text-yellow-400 font-extrabold text-2xl ">MAR</span>
+                <span className="text-yellow-400 font-extrabold text-2xl ">MAR </span>
                 <span className="text-white font-extrabold text-2xl ">BURGER</span>
               </div>
             </Link>

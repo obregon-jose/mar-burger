@@ -55,11 +55,11 @@ interface DeliveryZone {
 }
 
 interface Hours {
-  [key: string]: {
-    open: string;
-    close: string;
-    enabled: boolean;
-  };
+  id: number;
+  day: string;
+  open: string;
+  close: string;
+  enabled: boolean;
 }
 
 interface shoppingCart {
@@ -94,7 +94,7 @@ interface RestaurantData {
   // categories: Category[];
   paymentMethods: PaymentMethod[];
   deliveryZones: DeliveryZone[];
-  hours: Hours;
+  hours: Hours[];
   stats: {
     happyCustomers: number;
     averageTime: string;
@@ -132,9 +132,9 @@ const initialData: RestaurantData = {
     heroImage: "",
     heroSlogan: "¡Sabor que conquista el mar y la ciudad!",
     description:
-      "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
+      "Disfruta las mejores hamburguesas y platos de mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
     phone: "3205521623",
-    instagram: "@marburgeroficial",
+    instagram: "marburgueroficial",
     address: "Carrera 29 #66-05, Ciudad 2000, Cali", //corregir poner el iform
     enabled: true,
   },
@@ -144,20 +144,16 @@ const initialData: RestaurantData = {
     rating: 4.2,
     enabled: true,
   },
-  hours: {
-    monday: { open: "11:00", close: "22:00", enabled: false },
-    tuesday: { open: "11:00", close: "22:00", enabled: true },
-    wednesday: { open: "11:00", close: "22:00", enabled: true },
-    thursday: { open: "11:00", close: "22:00", enabled: true },
-    friday: { open: "11:00", close: "22:00", enabled: true },
-    saturday: { open: "11:00", close: "23:00", enabled: true },
-    sunday: { open: "12:00", close: "22:00", enabled: true },
-  },
+  hours: [
+    { id: 1, day: "Lunes - Viernes", open: "11:00 am", close: "10:00 pm", enabled: true },
+    { id: 2, day: "Sábados", open: "11:00 am", close: "10:00 pm", enabled: true },
+    { id: 3, day: "Domingos", open: "12:00 am", close: "10:00 pm", enabled: true },
+  ],
   deliveryZones: [
-    { id: 1, name: "Centro", price: 0, time: "20-30 min", enabled: true },
-    { id: 2, name: "Norte", price: 4000, time: "30-40 min", enabled: true },
-    { id: 3, name: "Sur", price: 0, time: "15-25 min", enabled: true },
-    { id: 4, name: "Oeste", price: 2000, time: "25-35 min", enabled: true },
+    { id: 1, name: "Centro", price: 2000, time: "20-30 min", enabled: true },
+    { id: 2, name: "Norte", price: 2000, time: "30-40 min", enabled: true },
+    { id: 3, name: "Sur", price: 0, time: "10-20 min", enabled: true },
+    { id: 4, name: "Oeste", price: 2000, time: "20-30 min", enabled: true },
   ],
   paymentMethods: [
     {
@@ -203,28 +199,29 @@ const initialData: RestaurantData = {
       icon: "🍟",
       enabled: false,
     },
-    { 
-      id: 3, 
-      name: "Bebidas", 
-      icon: "🥤", 
-      enabled: true },
-    { 
-      id: 4, 
-      name: "Mariscos", 
-      icon: "🍤", 
-      enabled: true 
+    {
+      id: 3,
+      name: "Bebidas",
+      icon: "🥤",
+      enabled: true
     },
-    { 
-      id: 5, 
-      name: "Asados", 
-      icon: "🥩", 
-      enabled: true 
+    {
+      id: 4,
+      name: "Mariscos",
+      icon: "🍤",
+      enabled: true
     },
-    { 
-      id: 6, 
-      name: "Postres", 
-      icon: "🥩🥩", 
-      enabled: false 
+    {
+      id: 5,
+      name: "Asados",
+      icon: "🥩",
+      enabled: true
+    },
+    {
+      id: 6,
+      name: "Postres",
+      icon: "🥩🥩",
+      enabled: false
     },
   ],
   products: [
@@ -644,13 +641,13 @@ export function RestaurantProvider({
             promotionPrice:
               promo.promotionPrice || promo.discountPercent
                 ? Math.round(
-                    parsedData.products.find(
-                      (p: Product) => p.id === promo.productId
-                    )?.price *
-                      (1 - promo.discountPercent / 100)
-                  )
+                  parsedData.products.find(
+                    (p: Product) => p.id === promo.productId
+                  )?.price *
+                  (1 - promo.discountPercent / 100)
+                )
                 : parsedData.products.find((p: Product) => p.id === promo.productId)
-                    ?.price || 0,
+                  ?.price || 0,
             isFlashSale: promo.isFlashSale || false,
           }));
         }

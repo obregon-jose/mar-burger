@@ -6,10 +6,9 @@ import { Menu } from "@/components/page-sections/menu"
 import { Promotions } from "../components/page-sections/promotions"
 import { PaymentMethod } from "@/components/page-sections/payment"
 import { Location } from "@/components/page-sections/location"
-// import { Contact } from "@/components/page-sections/contact"
+import { Contact } from "@/components/page-sections/contact"
 // import { Reviews } from "@/components/page-sections/reviews"
-// // import { PromotionsCarousel } from "@/components/page-sections/promotions-carousel"
-// import { Footer } from "@/components/footer"
+import { Footer } from "@/components/footer"
 // import { Questions } from "@/components/page-sections/questions"
 
 
@@ -26,12 +25,11 @@ export default function HomePage() {
           <Promotions />
           <PaymentMethod />
           <Location />
-          {/* <Contact /> */}
+          <Contact />
           {/* <Reviews /> */}
           {/* <Questions /> */}
         </main>
-        {/* <Footer />  */}
-        {/* <AdminAccessButton /> */}
+        <Footer /> 
       </div> 
     </RestaurantProvider>
   )
