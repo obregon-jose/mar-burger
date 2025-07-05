@@ -89,7 +89,7 @@ export function Location() {
                         )
                       }
                       variant="outline"
-                      className="bg-white border-black text-black hover:bg-yellow-400 font-bold"
+                      className="bg-white border-black text-black hover:bg-yellow-400 font-bold relative"
                     >
                       <Navigation className="w-4 h-4 mr-2" />
                       CÓMO LLEGAR
