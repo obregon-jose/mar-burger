@@ -382,9 +382,18 @@ const groupedProducts = categories.reduce((acc, catName) => {
         className="mb-12 bg-gray-800 rounded-2xl shadow-lg p-6 border border-yellow-400/30"
       >
         <div className="flex flex-col items-center mb-4 animate-pulse">
-          <h3 className="text-2xl font-extrabold text-center tracking-widest uppercase bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-lg">
+            <h3
+            className="text-2xl font-extrabold text-center tracking-widest uppercase drop-shadow-lg"
+            style={{
+              background: "linear-gradient(90deg, #facc15, #ef4444, #facc15)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+            >
             {category}
-          </h3>
+            </h3>
           <span className="block w-16 h-1 bg-yellow-400 rounded-full mt-1" />
         </div>
         <InfiniteCarousel products={products} />

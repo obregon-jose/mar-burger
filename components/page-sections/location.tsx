@@ -76,20 +76,22 @@ export function Location() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
                     <Button
                       onClick={() => window.open(`tel:${data.restaurant.phone}`, "_self")}
-                      className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold"
+                      // className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold"
+                                        className="bg-red-700 bg-gradient-to-r space-x-2 from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
+
                     >
                       <Phone className="w-4 h-4 mr-2" />
                       LLAMAR
                     </Button>
                     <Button
                       onClick={() =>
-                        window.open(
-                          `https://maps.google.com/?q=${encodeURIComponent(data.restaurant.address)}`,
-                          "_blank",
-                        )
+                      window.open(
+                        `https://maps.google.com/?q=${encodeURIComponent(data.restaurant.address)}`,
+                        "_blank",
+                      )
                       }
                       variant="outline"
-                      className="border-black text-black hover:bg-yellow-400 font-bold"
+                      className="bg-white border-black text-black hover:bg-yellow-400 font-bold"
                     >
                       <Navigation className="w-4 h-4 mr-2" />
                       CÓMO LLEGAR

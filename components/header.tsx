@@ -66,6 +66,7 @@ export function Header() {
 
               <Button
                 onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
+                
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold">
                 PEDIR AHORA
               </Button>
@@ -91,12 +92,13 @@ export function Header() {
                       {item.label}
                     </Link>
                   ))}
-                  <Button 
+                  {/* <Button 
                   onClick={() => sendWhatsAppMessage(data.restaurant.phone)} 
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold flex items-center space-x-2">
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold flex items-center space-x-2"
+                  >
                     PEDIR AHORA
                     <WhatsAppIcon className="w-8 h-8 text-white" />
-                  </Button>
+                  </Button> */}
                 </div>
               </SheetContent>
             </Sheet>
