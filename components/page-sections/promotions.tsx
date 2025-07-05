@@ -104,11 +104,12 @@ export function Promotions() {
                           />
 
                           {/* Badges */}
-                          <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-red-600 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full flex items-center space-x-1 shadow-xl text-xs sm:text-sm">
-                            {/* <Percent className="w-3 h-3 sm:w-4 sm:h-4" /> */}
-                            <span className="font-bold">{promotion.discountPercent}% OFF - </span>
-                            <div className="text-green-400- font-bold">
-                              Ahorras: ${(product.price - finalPrice).toLocaleString()}
+                          <div>
+                            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-red-600/70 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full flex items-center space-x-1 shadow-xl text-xs sm:text-sm">
+                              <span className="font-bold">{promotion.discountPercent}% OFF</span>
+                            </div>
+                            <div className="absolute top-10 sm:top-12 left-3 sm:left-4 bg-green-600/60  text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full flex items-center space-x-1 shadow-xl text-xs sm:text-sm">
+                              <span className="font-bold">Ahorras: <span className="text-white">${(product.price - finalPrice).toLocaleString()}</span></span>
                             </div>
                           </div>
 
@@ -173,9 +174,7 @@ export function Promotions() {
 
                           <Button
                             onClick={() => sendWhatsAppMessage(data.restaurant.phone, `¡Hola! Me interesa la promoción de ${product.name} 🍔`)}
-                            // className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-                                              className="bg-red-700 bg-gradient-to-r space-x-2 from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
-
+                            className="bg-red-700 bg-gradient-to-r space-x-2 from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
                           >
                             🍔 PÍDELO YA
                           </Button>

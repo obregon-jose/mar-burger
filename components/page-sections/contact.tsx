@@ -51,30 +51,29 @@ export function Contact() {
           <Card className="w-full max-w-2xl bg-black border-red-600/20">
             <CardContent className="p-6">
               <h3 className="text-2xl font-bold text-white mb-6 text-center">
-          Escríbenos a través de WhatsApp
+                Escríbenos a través de WhatsApp
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <Textarea
-              name="message"
-              placeholder="Cuéntanos sobre tu experiencia o sugerencias"
-              value={formData.message}
-              onChange={handleChange}
-              rows={5}
-              className="bg-gray-900 border-red-600/20 text-white placeholder:text-gray-400"
-              required
-            />
-          </div>
-          <Button
-            type="submit"
-            // className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold"
-                              className="bg-red-700 bg-gradient-to-r space-x-2 from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
+                <div>
+                  <Textarea
+                    name="message"
+                    placeholder="Cuéntanos sobre tu experiencia o sugerencias"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={5}
+                    className="bg-gray-900 border-red-600/20 text-white placeholder:text-gray-400"
+                    required
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full bg-red-700 bg-gradient-to-r space-x-2 from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
 
-            disabled={!formData.message.trim()}
-          >
-            <Send className="w-5 h-5 mr-2" />
-            ENVIAR MENSAJE
-          </Button>
+                  disabled={!formData.message.trim()}
+                >
+                  <Send className="w-5 h-5 mr-2" />
+                  ENVIAR MENSAJE
+                </Button>
               </form>
             </CardContent>
           </Card>
