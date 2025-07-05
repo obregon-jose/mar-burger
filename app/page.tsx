@@ -8,9 +8,8 @@ import { PaymentMethod } from "@/components/page-sections/payment"
 import { Location } from "@/components/page-sections/location"
 import { Contact } from "@/components/page-sections/contact"
 // import { Reviews } from "@/components/page-sections/reviews"
+import { Questions } from "@/components/page-sections/questions"
 import { Footer } from "@/components/footer"
-// import { Questions } from "@/components/page-sections/questions"
-
 
 
 export default function HomePage() {
@@ -27,7 +26,7 @@ export default function HomePage() {
           <Location />
           <Contact />
           {/* <Reviews /> */}
-          {/* <Questions /> */}
+          <Questions />
         </main>
         <Footer /> 
       </div> 
