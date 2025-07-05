@@ -5,6 +5,7 @@ import { Percent, ChevronLeft, ChevronRight, Clock, Zap } from "lucide-react"
 import { useRestaurant } from "@/contexts/restaurant-context"
 import Image from "next/image"
 import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
+import { Button } from "../ui/button"
 
 // Función para obtener fecha en zona horaria de Colombia
 const getColombianDate = (date?: Date) => {
@@ -170,12 +171,19 @@ export function Promotions() {
                             </div>
                           </div>
 
-                          <button
+                          <Button
                             onClick={() => sendWhatsAppMessage(data.restaurant.phone, `¡Hola! Me interesa la promoción de ${product.name} 🍔`)}
                             className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-base sm:text-lg"
                           >
                             🍔 PÍDELO YA
-                          </button>
+                          </Button>
+                          {/* <Button
+                                                className={`bg-red-600 hover:bg-red-700 text-white font-bold ${
+                                                  promo.featured ? "text-lg py-3" : ""
+                                                }`}
+                                              >
+                                                PÍDELO YA
+                                              </Button> */}
                         </div>
                       </div>
                     </div>

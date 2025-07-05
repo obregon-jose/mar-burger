@@ -22,11 +22,12 @@ export function PaymentMethod() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                <div className="grid grid-cols-2 sm:flex sm:gap-8 w-full max-w-5xl mx-auto gap-4">
                     {enabledPaymentMethods.map((method) => (
                         <div
                             key={method.id}
-                            className="flex flex-col items-center justify-center bg-black p-6 rounded-lg border border-red-600/20 shadow hover:shadow-lg transition"
+                            className="flex flex-col items-center justify-center bg-black p-6 rounded-lg border border-red-600/20 shadow hover:shadow-lg transition w-full"
                         >
                             <div className="mb-3">
                                 {method.icon === "banknote" && <Banknote className="w-8 h-8 text-green-500" />}
@@ -37,6 +38,8 @@ export function PaymentMethod() {
                         </div>
                     ))}
                 </div>
+
+
             </div>
         </section>
     )

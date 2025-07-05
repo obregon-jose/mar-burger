@@ -73,7 +73,7 @@ export function Hero() {
           <div className="hidden lg:block relative p-15 pt-15">
             <div className="relative z-10">
               <Image
-                src={data.restaurant.heroImage}
+                src={data.restaurant.heroImage || "/images/logobig.png"}
                 alt="Hamburguesa Clásica Mar Burger"
                 width={500}
                 height={500}

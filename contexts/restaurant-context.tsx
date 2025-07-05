@@ -8,7 +8,7 @@ interface Product {
   name: string;
   description: string;
   price: number;
-  image: string;
+  image?: string;
   category_id: number;
   popular: boolean;
   enabled: boolean;
@@ -107,16 +107,16 @@ interface RestaurantData {
 
 interface RestaurantContextType {
   data: RestaurantData;
-  updateData: (newData: RestaurantData) => void;
-  addProduct: (product: Omit<Product, "id">) => void;
-  updateProduct: (id: number, product: Partial<Product>) => void;
-  deleteProduct: (id: number) => void;
-  addPromotion: (promotion: Omit<Promotion, "id">) => void;
-  updatePromotion: (id: number, promotion: Partial<Promotion>) => void;
-  deletePromotion: (id: number) => void;
-  addCategory: (category: Omit<Category, "id">) => void;
-  updateCategory: (id: string, category: Partial<Category>) => void;
-  deleteCategory: (id: string) => void;
+  // updateData: (newData: RestaurantData) => void;
+  // addProduct: (product: Omit<Product, "id">) => void;
+  // updateProduct: (id: number, product: Partial<Product>) => void;
+  // deleteProduct: (id: number) => void;
+  // addPromotion: (promotion: Omit<Promotion, "id">) => void;
+  // updatePromotion: (id: number, promotion: Partial<Promotion>) => void;
+  // deletePromotion: (id: number) => void;
+  // addCategory: (category: Omit<Category, "id">) => void;
+  // updateCategory: (id: string, category: Partial<Category>) => void;
+  // deleteCategory: (id: string) => void;
   loading: boolean;
 }
 
@@ -129,7 +129,7 @@ const initialData: RestaurantData = {
     name: "Mar Burger",
     slug: "mar-burger",
     logo: "/images/logo.png",
-    heroImage: "/images/h.png",
+    heroImage: "",
     heroSlogan: "¡Sabor que conquista el mar y la ciudad!",
     description:
       "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
@@ -233,7 +233,7 @@ const initialData: RestaurantData = {
       name: "Res sencilla",
       description: "",
       price: 0, //
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 1,
       popular: true,
       enabled: true,
@@ -244,7 +244,7 @@ const initialData: RestaurantData = {
       name: "Res doble",
       description: "", //
       price: 0, //
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 1,
       popular: false,
       enabled: true,
@@ -255,7 +255,7 @@ const initialData: RestaurantData = {
       name: "Pollo sencilla",
       description: "", //
       price: 0,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 1,
       popular: false,
       enabled: true,
@@ -266,7 +266,7 @@ const initialData: RestaurantData = {
       name: "Pollo doble",
       description: "", //
       price: 0,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 1,
       popular: false,
       enabled: true,
@@ -277,7 +277,7 @@ const initialData: RestaurantData = {
       name: "Mixta",
       description: "", //
       price: 0,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 1,
       popular: false,
       enabled: true,
@@ -288,7 +288,7 @@ const initialData: RestaurantData = {
       name: "Cazuela de mariscos",
       description: "",
       price: 35000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 4,
       popular: false,
       enabled: true,
@@ -299,7 +299,7 @@ const initialData: RestaurantData = {
       name: "Camaron apanado",
       description: "",
       price: 30000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 4,
       popular: false,
       enabled: true,
@@ -310,7 +310,7 @@ const initialData: RestaurantData = {
       name: "Camaron al ajillo",
       description: "",
       price: 0,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 4,
       popular: false,
       enabled: true,
@@ -321,7 +321,7 @@ const initialData: RestaurantData = {
       name: "Ceviche de camaron",
       description: "",
       price: 30000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 4,
       popular: false,
       enabled: true,
@@ -332,7 +332,7 @@ const initialData: RestaurantData = {
       name: "Tripletazo de mariscos",
       description: "",
       price: 35000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 4,
       popular: false,
       enabled: true,
@@ -343,7 +343,7 @@ const initialData: RestaurantData = {
       name: "Arroz a la marinela",
       description: "",
       price: 30000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 4,
       popular: false,
       enabled: true,
@@ -355,7 +355,7 @@ const initialData: RestaurantData = {
       name: "Arroz de camarones 2x1",
       description: "",
       price: 50000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 4,
       popular: false,
       enabled: true,
@@ -366,7 +366,7 @@ const initialData: RestaurantData = {
       name: "Filete de res",
       description: "",
       price: 18000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -377,7 +377,7 @@ const initialData: RestaurantData = {
       name: "Filete de pollo",
       description: "",
       price: 18000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -388,7 +388,7 @@ const initialData: RestaurantData = {
       name: "Filete de cerdo",
       description: "",
       price: 18000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -399,7 +399,7 @@ const initialData: RestaurantData = {
       name: "Lomo de cerdo",
       description: "",
       price: 20000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -410,7 +410,7 @@ const initialData: RestaurantData = {
       name: "Punta de ancaa",
       description: "",
       price: 20000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -421,7 +421,7 @@ const initialData: RestaurantData = {
       name: "Chuleta de pollo",
       description: "",
       price: 20000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -432,7 +432,7 @@ const initialData: RestaurantData = {
       name: "Chuleta de cerdo",
       description: "",
       price: 20000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -443,7 +443,7 @@ const initialData: RestaurantData = {
       name: "Costillas a la BBQ",
       description: "",
       price: 25000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -454,7 +454,7 @@ const initialData: RestaurantData = {
       name: "Picada personal",
       description: "",
       price: 25000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -465,7 +465,7 @@ const initialData: RestaurantData = {
       name: "Picada Grande",
       description: "",
       price: 50000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 5,
       popular: false,
       enabled: true,
@@ -476,7 +476,7 @@ const initialData: RestaurantData = {
       name: "Jugo de borojo en leche",
       description: "",
       price: 8000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 3,
       popular: false,
       enabled: true,
@@ -487,7 +487,7 @@ const initialData: RestaurantData = {
       name: "Jugo de mango en leche",
       description: "",
       price: 8000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 3,
       popular: false,
       enabled: true,
@@ -498,7 +498,7 @@ const initialData: RestaurantData = {
       name: "Jugo de mora en leche",
       description: "",
       price: 8000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 3,
       popular: false,
       enabled: true,
@@ -509,7 +509,7 @@ const initialData: RestaurantData = {
       name: "Jugo de tomate de arbol en leche",
       description: "",
       price: 8000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 3,
       popular: false,
       enabled: true,
@@ -520,7 +520,7 @@ const initialData: RestaurantData = {
       name: "Jugo de guayaba en leche",
       description: "",
       price: 8000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 3,
       popular: false,
       enabled: true,
@@ -531,7 +531,7 @@ const initialData: RestaurantData = {
       name: "Limonada",
       description: "",
       price: 6000,
-      image: "/images/h2.png?height=300&width=300",
+      image: "",
       category_id: 3,
       popular: false,
       enabled: true,
@@ -549,7 +549,7 @@ const initialData: RestaurantData = {
       discountPercent: 17,
       startDate: "2025-07-01",
       endDate: "2025-07-31",
-      enabled: true,
+      enabled: false,
       featured: true,
       isFlashSale: false,
     },
@@ -562,7 +562,7 @@ const initialData: RestaurantData = {
       discountPercent: 50,
       startDate: "2025-01-01",
       endDate: "2025-12-31",
-      enabled: true,
+      enabled: false,
       featured: false,
       isFlashSale: false,
     },
@@ -575,7 +575,7 @@ const initialData: RestaurantData = {
       discountPercent: 10,
       startDate: "2025-01-01",
       endDate: "2025-12-31",
-      enabled: true,
+      enabled: false,
       featured: false,
       isFlashSale: false,
     },
@@ -588,7 +588,7 @@ const initialData: RestaurantData = {
       discountPercent: 20,
       startDate: "2025-01-01",
       endDate: "2025-12-31",
-      enabled: true,
+      enabled: false,
       featured: false,
       isFlashSale: false,
     },
@@ -602,7 +602,7 @@ const initialData: RestaurantData = {
       //   productId: 1,
       //   quantity: 3,
       //   note: "Sin cebolla",
-      //   image: "/images/h2.png?height=300&width=300",
+      //   image: "",
       //   name: "Hamburguesa Clásica",
       //   price: 18000,
       // },
@@ -611,7 +611,7 @@ const initialData: RestaurantData = {
       //   productId: 5,
       //   quantity: 1,
       //   note: "Con extra sal",
-      //   image: "/images/h2.png?height=300&width=300",
+      //   image: "",
       //   name: "Papas Fritas",
       //   price: 8000,
       // },
@@ -625,8 +625,11 @@ export function RestaurantProvider({
   children: React.ReactNode;
 }) {
   const [data, setData] = useState<RestaurantData>(initialData);
-  const [loading, setLoading] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [mounted, setMounted] = useState(false);
+  const [loading] = useState(false);
+  const [, setMounted] = useState(false);
+
 
   useEffect(() => {
     setMounted(true);
@@ -636,17 +639,17 @@ export function RestaurantProvider({
         const parsedData = JSON.parse(savedData);
         // Migrar datos antiguos si no tienen las nuevas propiedades
         if (parsedData.promotions) {
-          parsedData.promotions = parsedData.promotions.map((promo: any) => ({
+          parsedData.promotions = parsedData.promotions.map((promo: Promotion) => ({
             ...promo,
             promotionPrice:
               promo.promotionPrice || promo.discountPercent
                 ? Math.round(
                     parsedData.products.find(
-                      (p: any) => p.id === promo.productId
+                      (p: Product) => p.id === promo.productId
                     )?.price *
                       (1 - promo.discountPercent / 100)
                   )
-                : parsedData.products.find((p: any) => p.id === promo.productId)
+                : parsedData.products.find((p: Product) => p.id === promo.productId)
                     ?.price || 0,
             isFlashSale: promo.isFlashSale || false,
           }));
@@ -661,115 +664,115 @@ export function RestaurantProvider({
     }
   }, []);
 
-  const updateData = (newData: RestaurantData) => {
-    setData(newData);
-    if (mounted) {
-      localStorage.setItem("restaurant-data", JSON.stringify(newData));
-    }
-  };
+  // const updateData = (newData: RestaurantData) => {
+  //   setData(newData);
+  //   if (mounted) {
+  //     localStorage.setItem("restaurant-data", JSON.stringify(newData));
+  //   }
+  // };
 
-  const addProduct = (product: Omit<Product, "id">) => {
-    const newId = Math.max(...data.products.map((p) => p.id), 0) + 1;
-    const newProduct = { ...product, id: newId };
-    const updatedData = {
-      ...data,
-      products: [...data.products, newProduct],
-    };
-    updateData(updatedData);
-  };
+  // const addProduct = (product: Omit<Product, "id">) => {
+  //   const newId = Math.max(...data.products.map((p) => p.id), 0) + 1;
+  //   const newProduct = { ...product, id: newId };
+  //   const updatedData = {
+  //     ...data,
+  //     products: [...data.products, newProduct],
+  //   };
+  //   updateData(updatedData);
+  // };
 
-  const updateProduct = (id: number, productUpdate: Partial<Product>) => {
-    const updatedData = {
-      ...data,
-      products: data.products.map((product) =>
-        product.id === id ? { ...product, ...productUpdate } : product
-      ),
-    };
-    updateData(updatedData);
-  };
+  // const updateProduct = (id: number, productUpdate: Partial<Product>) => {
+  //   const updatedData = {
+  //     ...data,
+  //     products: data.products.map((product) =>
+  //       product.id === id ? { ...product, ...productUpdate } : product
+  //     ),
+  //   };
+  //   updateData(updatedData);
+  // };
 
-  const deleteProduct = (id: number) => {
-    const updatedData = {
-      ...data,
-      products: data.products.filter((product) => product.id !== id),
-      promotions: data.promotions.filter(
-        (promotion) => promotion.productId !== id
-      ),
-    };
-    updateData(updatedData);
-  };
+  // const deleteProduct = (id: number) => {
+  //   const updatedData = {
+  //     ...data,
+  //     products: data.products.filter((product) => product.id !== id),
+  //     promotions: data.promotions.filter(
+  //       (promotion) => promotion.productId !== id
+  //     ),
+  //   };
+  //   updateData(updatedData);
+  // };
 
-  const addPromotion = (promotion: Omit<Promotion, "id">) => {
-    const newId = Math.max(...data.promotions.map((p) => p.id), 0) + 1;
-    const newPromotion = { ...promotion, id: newId };
-    const updatedData = {
-      ...data,
-      promotions: [...data.promotions, newPromotion],
-    };
-    updateData(updatedData);
-  };
+  // const addPromotion = (promotion: Omit<Promotion, "id">) => {
+  //   const newId = Math.max(...data.promotions.map((p) => p.id), 0) + 1;
+  //   const newPromotion = { ...promotion, id: newId };
+  //   const updatedData = {
+  //     ...data,
+  //     promotions: [...data.promotions, newPromotion],
+  //   };
+  //   updateData(updatedData);
+  // };
 
-  const updatePromotion = (id: number, promotionUpdate: Partial<Promotion>) => {
-    const updatedData = {
-      ...data,
-      promotions: data.promotions.map((promotion) =>
-        promotion.id === id ? { ...promotion, ...promotionUpdate } : promotion
-      ),
-    };
-    updateData(updatedData);
-  };
+  // const updatePromotion = (id: number, promotionUpdate: Partial<Promotion>) => {
+  //   const updatedData = {
+  //     ...data,
+  //     promotions: data.promotions.map((promotion) =>
+  //       promotion.id === id ? { ...promotion, ...promotionUpdate } : promotion
+  //     ),
+  //   };
+  //   updateData(updatedData);
+  // };
 
-  const deletePromotion = (id: number) => {
-    const updatedData = {
-      ...data,
-      promotions: data.promotions.filter((promotion) => promotion.id !== id),
-    };
-    updateData(updatedData);
-  };
+  // const deletePromotion = (id: number) => {
+  //   const updatedData = {
+  //     ...data,
+  //     promotions: data.promotions.filter((promotion) => promotion.id !== id),
+  //   };
+  //   updateData(updatedData);
+  // };
 
-  const addCategory = (category: Omit<Category, "id">) => {
-    const newId = category.name.toLowerCase().replace(/\s+/g, "-");
-    const newCategory = { ...category, id: newId };
-    const updatedData = {
-      ...data,
-      categories: [...data.categories, newCategory],
-    };
-    updateData(updatedData);
-  };
+  // const addCategory = (category: Omit<Category, "id">) => {
+  //   const newId = category.name.toLowerCase().replace(/\s+/g, "-");
+  //   const newCategory = { ...category, id: newId };
+  //   const updatedData = {
+  //     ...data,
+  //     categories: [...data.categories, newCategory],
+  //   };
+  //   updateData(updatedData);
+  // };
 
-  const updateCategory = (id: string, categoryUpdate: Partial<Category>) => {
-    const updatedData = {
-      ...data,
-      categories: data.categories.map((category) =>
-        category.id === id ? { ...category, ...categoryUpdate } : category
-      ),
-    };
-    updateData(updatedData);
-  };
+  // const updateCategory = (id: string, categoryUpdate: Partial<Category>) => {
+  //   const updatedData = {
+  //     ...data,
+  //     categories: data.categories.map((category) =>
+  //       category.id === id ? { ...category, ...categoryUpdate } : category
+  //     ),
+  //   };
+  //   updateData(updatedData);
+  // };
 
-  const deleteCategory = (id: string) => {
-    const updatedData = {
-      ...data,
-      categories: data.categories.filter((category) => category.id !== id),
-      products: data.products.filter((product) => product.category !== id),
-    };
-    updateData(updatedData);
-  };
+  // const deleteCategory = (id: string) => {
+  //   const updatedData = {
+  //     ...data,
+  //     categories: data.categories.filter((category) => category.id !== id),
+  //     products: data.products.filter((product) => product.category !== id),
+  //   };
+  //   updateData(updatedData);
+  // };
 
   return (
     <RestaurantContext.Provider
       value={{
         data,
-        updateData,
-        addProduct,
-        updateProduct,
-        deleteProduct,
-        addPromotion,
-        updatePromotion,
-        deletePromotion,
-        addCategory,
-        updateCategory,
-        deleteCategory,
+        // updateData,
+        // addProduct,
+        // updateProduct,
+        // deleteProduct,
+        // addPromotion,
+        // updatePromotion,
+        // deletePromotion,
+        // addCategory,
+        // updateCategory,
+        // deleteCategory,
         loading,
       }}
     >

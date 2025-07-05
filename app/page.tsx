@@ -4,7 +4,7 @@ import { Header } from "@/components/header"
 import { Hero } from "@/components/page-sections/hero"
 import { Menu } from "@/components/page-sections/menu"
 import { Promotions } from "../components/page-sections/promotions"
-// import { PaymentMethod } from "@/components/page-sections/payment"
+import { PaymentMethod } from "@/components/page-sections/payment"
 // import { Location } from "@/components/page-sections/location"
 // import { Contact } from "@/components/page-sections/contact"
 // import { Reviews } from "@/components/page-sections/reviews"
@@ -24,7 +24,7 @@ export default function HomePage() {
           <Hero />
           <Menu />
           <Promotions />
-          {/* <PaymentMethod /> */}
+          <PaymentMethod />
           {/* <Location /> */}
           {/* <Contact /> */}
           {/* <Reviews /> */}
