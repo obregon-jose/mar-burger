@@ -5,7 +5,7 @@ import { Hero } from "@/components/page-sections/hero"
 import { Menu } from "@/components/page-sections/menu"
 import { Promotions } from "../components/page-sections/promotions"
 import { PaymentMethod } from "@/components/page-sections/payment"
-// import { Location } from "@/components/page-sections/location"
+import { Location } from "@/components/page-sections/location"
 // import { Contact } from "@/components/page-sections/contact"
 // import { Reviews } from "@/components/page-sections/reviews"
 // // import { PromotionsCarousel } from "@/components/page-sections/promotions-carousel"
@@ -25,7 +25,7 @@ export default function HomePage() {
           <Menu />
           <Promotions />
           <PaymentMethod />
-          {/* <Location /> */}
+          <Location />
           {/* <Contact /> */}
           {/* <Reviews /> */}
           {/* <Questions /> */}

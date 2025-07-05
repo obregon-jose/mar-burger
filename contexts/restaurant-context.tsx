@@ -135,7 +135,7 @@ const initialData: RestaurantData = {
       "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
     phone: "3205521623",
     instagram: "@marburgeroficial",
-    address: "Carrera 29 #66-05, Ciudad 2000, Cali", //corregir
+    address: "Carrera 29 #66-05, Ciudad 2000, Cali", //corregir poner el iform
     enabled: true,
   },
   stats: {
@@ -549,7 +549,7 @@ const initialData: RestaurantData = {
       discountPercent: 17,
       startDate: "2025-07-01",
       endDate: "2025-07-31",
-      enabled: false,
+      enabled: true,
       featured: true,
       isFlashSale: false,
     },
@@ -562,7 +562,7 @@ const initialData: RestaurantData = {
       discountPercent: 50,
       startDate: "2025-01-01",
       endDate: "2025-12-31",
-      enabled: false,
+      enabled: true,
       featured: false,
       isFlashSale: false,
     },

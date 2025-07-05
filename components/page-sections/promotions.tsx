@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Percent, ChevronLeft, ChevronRight, Clock, Zap } from "lucide-react"
+import { ChevronLeft, ChevronRight, Clock, Zap } from "lucide-react"
 import { useRestaurant } from "@/contexts/restaurant-context"
 import Image from "next/image"
 import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
@@ -54,7 +54,7 @@ export function Promotions() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + availableProductsWithPromotions.length) % availableProductsWithPromotions.length)
 
   return (
-    <section id="promociones" className="py-12 sm:py-16 lg:py-20 bg-black relative z-10">
+    <section id="promociones" className="py-10 sm:py-10 lg:py-10 bg-black relative- z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -63,7 +63,7 @@ export function Promotions() {
           </h2>
           {availableProductsWithPromotions.length > 0 && (
             <p className="text-gray-300 text-base sm:text-lg max-w-4xl mx-auto">
-              Aprovecha nuestras increíbles ofertas y disfruta de la mejor comida al mejor precio
+              Aprovecha nuestras increíbles ofertas y disfruta de la mejor comida al mejor precio.
             </p>
           )}
         </div>
@@ -76,9 +76,9 @@ export function Promotions() {
             </div>
           </div>
         ) : (
-          <div className="relative max-w-6xl mx-auto">
+          <div className="relative max-w-5xl mx-auto">
             {/* Contenedor del carrusel */}
-            <div className="relative overflow-hidden rounded-2xl bg-gray-900 border border-red-600/20 shadow-2xl">
+            <div className="relative max-w-3xl mx-auto overflow-hidden rounded-xl bg-gray-900 border border-red-600/20 shadow-xl">
               <div
                 className="flex transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -86,45 +86,47 @@ export function Promotions() {
                 {availableProductsWithPromotions.map(({ product, promotion, finalPrice }) => {
                   if (!promotion) return null
 
-                  // Usar título del producto si no tiene título personalizado
                   const displayTitle = promotion.title || `OFERTA ${product.name.toUpperCase()}`
                   const displayDescription = promotion.description || `Descuento especial en ${product.name}`
-                  const displayImage = promotion.image || product.image || "/placeholder.svg?height=500&width=600"
+                  const displayImage = promotion.image || product.image || "/images/logobig.png"
 
                   return (
                     <div key={product.id} className="w-full flex-shrink-0">
-                      <div className="grid lg:grid-cols-2 min-h-[400px] sm:min-h-[500px]">
+                      <div className="grid lg:grid-cols-2 min-h-[260px] sm:min-h-[320px]">
                         {/* Imagen */}
                         <div className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
                           <Image
-                            src={displayImage || "/placeholder.svg"}
+                            src={displayImage}
                             alt={displayTitle}
-                            width={600}
-                            height={500}
-                            className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000"
+                            width={400}
+                            height={300}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                           />
 
                           {/* Badges */}
-                          <div className="absolute top-4 sm:top-6 left-4 sm:left-6 bg-red-600 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full flex items-center space-x-1 sm:space-x-2 shadow-xl">
-                            <Percent className="w-4 h-4 sm:w-5 sm:h-5" />
-                            <span className="font-bold text-sm sm:text-lg">{promotion.discountPercent}% OFF</span>
+                          <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-red-600 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full flex items-center space-x-1 shadow-xl text-xs sm:text-sm">
+                            {/* <Percent className="w-3 h-3 sm:w-4 sm:h-4" /> */}
+                            <span className="font-bold">{promotion.discountPercent}% OFF - </span>
+                            <div className="text-green-400- font-bold">
+                              Ahorras: ${(product.price - finalPrice).toLocaleString()}
+                            </div>
                           </div>
 
                           {promotion.featured && (
-                            <div className="absolute top-4 sm:top-6 right-4 sm:right-6 bg-yellow-500 text-black px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-xl">
+                            <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-yellow-500 text-black px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold shadow-xl">
                               ⭐ DESTACADA
                             </div>
                           )}
 
                           {promotion.isFlashSale && (
-                            <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 bg-orange-500 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-xl flex items-center space-x-1">
-                              <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
+                            <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-orange-500 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold shadow-xl flex items-center space-x-1">
+                              <Zap className="w-3 h-3" />
                               <span>RELÁMPAGO</span>
                             </div>
                           )}
 
                           {product.popular && (
-                            <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-xl">
+                            <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-green-500 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold shadow-xl">
                               🔥 POPULAR
                             </div>
                           )}
@@ -134,29 +136,29 @@ export function Promotions() {
                         </div>
 
                         {/* Contenido */}
-                        <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-4 sm:space-y-6 bg-gradient-to-br from-gray-900 to-black">
+                        <div className="p-4 sm:p-6 lg:p-8 flex flex-col justify-center space-y-2 sm:space-y-3 bg-gradient-to-br from-gray-900 to-black">
                           <div>
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 leading-tight">
+                            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1 leading-tight">
                               {displayTitle}
                             </h3>
-                            <p className="text-gray-300 text-base sm:text-lg mb-2 sm:mb-3">{displayDescription}</p>
-                            <p className="text-gray-400 text-sm">{product.description}</p>
+                            <p className="text-gray-300 text-sm sm:text-base mb-1">{displayDescription}</p>
+                            <p className="text-gray-400 text-xs">{product.description}</p>
                           </div>
 
-                          <div className="space-y-3 sm:space-y-4">
-                            <div className="flex items-center space-x-3 sm:space-x-4">
-                              <span className="text-gray-500 line-through text-lg sm:text-xl">
+                          <div className="space-y-2">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-gray-500 line-through text-base">
                                 ${product.price.toLocaleString()}
                               </span>
-                              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-500">
+                              <span className="text-2xl sm:text-3xl font-bold text-red-500">
                                 ${finalPrice.toLocaleString()}
                               </span>
                             </div>
 
-                            <div className="bg-red-600/10 border border-red-600/20 rounded-lg p-3">
-                              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-sm space-y-1 sm:space-y-0">
-                                <div className="flex items-center space-x-2 text-yellow-400">
-                                  <Clock className="w-4 h-4" />
+                            <div className="bg-red-600/10 border border-red-600/20 rounded-lg p-2">
+                              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm space-y-1 sm:space-y-0">
+                                <div className="flex items-center space-x-1 text-yellow-400">
+                                  <Clock className="w-3 h-3" />
                                   <span>
                                     Válida hasta {createDateFromInput(promotion.endDate).toLocaleDateString("es-CO")}
                                     {promotion.isFlashSale && promotion.flashDurationMinutes && (
@@ -164,26 +166,17 @@ export function Promotions() {
                                     )}
                                   </span>
                                 </div>
-                                <div className="text-green-400 font-bold">
-                                  Ahorras: ${(product.price - finalPrice).toLocaleString()}
-                                </div>
+
                               </div>
                             </div>
                           </div>
 
                           <Button
                             onClick={() => sendWhatsAppMessage(data.restaurant.phone, `¡Hola! Me interesa la promoción de ${product.name} 🍔`)}
-                            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-base sm:text-lg"
+                            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
                           >
                             🍔 PÍDELO YA
                           </Button>
-                          {/* <Button
-                                                className={`bg-red-600 hover:bg-red-700 text-white font-bold ${
-                                                  promo.featured ? "text-lg py-3" : ""
-                                                }`}
-                                              >
-                                                PÍDELO YA
-                                              </Button> */}
                         </div>
                       </div>
                     </div>
