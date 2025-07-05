@@ -44,7 +44,7 @@ export function Hero() {
                 <Button
                   size="lg"
                   onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
-                  className="bg-gradient-to-r space-x-2 from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
+                  className="bg-red-700 bg-gradient-to-r space-x-2 from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 gap-3"
                 >
                   PEDIR AHORA
                   <WhatsAppIcon className="w-12 h-12 text-white" />
