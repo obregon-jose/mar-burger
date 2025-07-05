@@ -9,7 +9,7 @@ interface Product {
   description: string;
   price: number;
   image: string;
-  category: string;
+  category_id: number;
   popular: boolean;
   enabled: boolean;
   stock: "available" | "out_of_stock";
@@ -32,11 +32,10 @@ interface Promotion {
 }
 
 interface Category {
-  id: string;
+  id: number;
   name: string;
   icon: string;
   enabled: boolean;
-  order: number;
 }
 
 interface PaymentMethod {
@@ -90,8 +89,9 @@ interface RestaurantData {
     enabled: boolean;
   };
   products: Product[];
+  productCategory: Category[];
   promotions: Promotion[];
-  categories: Category[];
+  // categories: Category[];
   paymentMethods: PaymentMethod[];
   deliveryZones: DeliveryZone[];
   hours: Hours;
@@ -190,44 +190,38 @@ const initialData: RestaurantData = {
     },
   ],
 
-  categories: [
+  productCategory: [
     {
-      id: "hamburguesas",
-      order: 1,
+      id: 1,
       name: "Hamburguesas",
       icon: "🍔",
       enabled: true,
     },
     {
-      id: "acompañamientos",
-      order: 2,
+      id: 2,
       name: "Acompañamientos",
       icon: "🍟",
-      enabled: true,
+      enabled: false,
     },
     { 
-      id: "bebidas", 
-      order: 3, 
+      id: 3, 
       name: "Bebidas", 
       icon: "🥤", 
       enabled: true },
     { 
-      id: "mariscos", 
-      order: 4, 
+      id: 4, 
       name: "Mariscos", 
       icon: "🍤", 
       enabled: true 
     },
     { 
-      id: "asados", 
-      order: 5, 
+      id: 5, 
       name: "Asados", 
       icon: "🥩", 
       enabled: true 
     },
     { 
-      id: "postes", 
-      order: 6, 
+      id: 6, 
       name: "Postres", 
       icon: "🥩🥩", 
       enabled: false 
@@ -240,7 +234,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 0, //
       image: "/images/h2.png?height=300&width=300",
-      category: "hamburguesas",
+      category_id: 1,
       popular: true,
       enabled: true,
       stock: "available",
@@ -251,7 +245,7 @@ const initialData: RestaurantData = {
       description: "", //
       price: 0, //
       image: "/images/h2.png?height=300&width=300",
-      category: "hamburguesas",
+      category_id: 1,
       popular: false,
       enabled: true,
       stock: "available",
@@ -262,7 +256,7 @@ const initialData: RestaurantData = {
       description: "", //
       price: 0,
       image: "/images/h2.png?height=300&width=300",
-      category: "hamburguesas",
+      category_id: 1,
       popular: false,
       enabled: true,
       stock: "available",
@@ -273,7 +267,7 @@ const initialData: RestaurantData = {
       description: "", //
       price: 0,
       image: "/images/h2.png?height=300&width=300",
-      category: "hamburguesas",
+      category_id: 1,
       popular: false,
       enabled: true,
       stock: "available",
@@ -284,7 +278,7 @@ const initialData: RestaurantData = {
       description: "", //
       price: 0,
       image: "/images/h2.png?height=300&width=300",
-      category: "hamburguesas",
+      category_id: 1,
       popular: false,
       enabled: true,
       stock: "available",
@@ -295,7 +289,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 35000,
       image: "/images/h2.png?height=300&width=300",
-      category: "mariscos",
+      category_id: 4,
       popular: false,
       enabled: true,
       stock: "available",
@@ -306,7 +300,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 30000,
       image: "/images/h2.png?height=300&width=300",
-      category: "mariscos",
+      category_id: 4,
       popular: false,
       enabled: true,
       stock: "available",
@@ -317,7 +311,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 0,
       image: "/images/h2.png?height=300&width=300",
-      category: "mariscos",
+      category_id: 4,
       popular: false,
       enabled: true,
       stock: "available",
@@ -328,7 +322,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 30000,
       image: "/images/h2.png?height=300&width=300",
-      category: "mariscos",
+      category_id: 4,
       popular: false,
       enabled: true,
       stock: "available",
@@ -339,7 +333,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 35000,
       image: "/images/h2.png?height=300&width=300",
-      category: "mariscos",
+      category_id: 4,
       popular: false,
       enabled: true,
       stock: "available",
@@ -350,7 +344,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 30000,
       image: "/images/h2.png?height=300&width=300",
-      category: "mariscos",
+      category_id: 4,
       popular: false,
       enabled: true,
       stock: "available",
@@ -362,7 +356,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 50000,
       image: "/images/h2.png?height=300&width=300",
-      category: "mariscos",
+      category_id: 4,
       popular: false,
       enabled: true,
       stock: "available",
@@ -373,7 +367,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 18000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -384,7 +378,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 18000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -395,7 +389,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 18000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -406,7 +400,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 20000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -417,7 +411,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 20000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -428,7 +422,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 20000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -439,7 +433,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 20000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -450,7 +444,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 25000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -461,7 +455,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 25000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -472,7 +466,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 50000,
       image: "/images/h2.png?height=300&width=300",
-      category: "asados",
+      category_id: 5,
       popular: false,
       enabled: true,
       stock: "available",
@@ -483,7 +477,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 8000,
       image: "/images/h2.png?height=300&width=300",
-      category: "bebidas",
+      category_id: 3,
       popular: false,
       enabled: true,
       stock: "available",
@@ -494,7 +488,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 8000,
       image: "/images/h2.png?height=300&width=300",
-      category: "bebidas",
+      category_id: 3,
       popular: false,
       enabled: true,
       stock: "available",
@@ -505,7 +499,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 8000,
       image: "/images/h2.png?height=300&width=300",
-      category: "bebidas",
+      category_id: 3,
       popular: false,
       enabled: true,
       stock: "available",
@@ -516,7 +510,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 8000,
       image: "/images/h2.png?height=300&width=300",
-      category: "bebidas",
+      category_id: 3,
       popular: false,
       enabled: true,
       stock: "available",
@@ -527,7 +521,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 8000,
       image: "/images/h2.png?height=300&width=300",
-      category: "bebidas",
+      category_id: 3,
       popular: false,
       enabled: true,
       stock: "available",
@@ -538,7 +532,7 @@ const initialData: RestaurantData = {
       description: "",
       price: 6000,
       image: "/images/h2.png?height=300&width=300",
-      category: "bebidas",
+      category_id: 3,
       popular: false,
       enabled: true,
       stock: "available",
@@ -562,12 +556,38 @@ const initialData: RestaurantData = {
     {
       id: 2,
       productId: 4,
-      title: "2x1 EN HAMBURGUESAS",
+      title: "HAMBURGUESAS",
       description: "Compra una hamburguesa doble y llévate otra gratis",
       promotionPrice: 12500,
       discountPercent: 50,
-      startDate: "2024-01-01",
-      endDate: "2024-12-31",
+      startDate: "2025-01-01",
+      endDate: "2025-12-31",
+      enabled: true,
+      featured: false,
+      isFlashSale: false,
+    },
+    {
+      id: 3,
+      productId: 8,
+      title: "cc",
+      description: "Compra una hamburguesa doble y llévate otra gratis",
+      promotionPrice: 1200,
+      discountPercent: 10,
+      startDate: "2025-01-01",
+      endDate: "2025-12-31",
+      enabled: true,
+      featured: false,
+      isFlashSale: false,
+    },
+    {
+      id: 8,
+      productId: 5,
+      title: "papa",
+      description: "Compra una hamburguesa doble y llévate otra gratis",
+      promotionPrice: 2500,
+      discountPercent: 20,
+      startDate: "2025-01-01",
+      endDate: "2025-12-31",
       enabled: true,
       featured: false,
       isFlashSale: false,
@@ -632,7 +652,7 @@ export function RestaurantProvider({
           }));
         }
         if (!parsedData.categories) {
-          parsedData.categories = initialData.categories;
+          parsedData.categories = initialData.productCategory;
         }
         setData(parsedData);
       } catch (error) {
