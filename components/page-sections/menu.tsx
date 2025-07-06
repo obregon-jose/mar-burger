@@ -325,7 +325,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
                       <span className="text-lg font-bold text-red-500">
                         ${product.price.toLocaleString()}
                       </span>
-                      <Button
+                        <Button
                         size="sm"
                         onClick={(e) => {
                           e.stopPropagation()

@@ -82,13 +82,10 @@ export function Reviews() {
                             className="bg-yellow-400 text-gray-900 font-semibold py-2 px-6 hover:bg-yellow-500 transition"
                             onClick={handleShowMore}
                         >
-
                             Ver más
                         </Button>
                     </div>
                 )}
-
-
             </div>
         </section>
     );
