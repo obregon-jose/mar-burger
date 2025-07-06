@@ -13,9 +13,30 @@ export function Menu() {
   const [activeCategory, setActiveCategory] = useState("Menú")
   const [searchTerm, setSearchTerm] = useState("")
 
+  // Determina el artículo ("un"/"una") usando heurística simple basada en la última letra de la palabra principal
   const handleOrderProduct = (productName: string, stock: string) => {
     if (stock === "out_of_stock") return
-    const message = `¡Hola! Me gustaría pedir ${productName} 🍔`
+
+    // Tomar la primera palabra significativa (ignorando "de", "del", etc.)
+    const mainWord = productName
+      .toLowerCase()
+      .split(" ")
+      .find(word => !["de", "del", "la", "el"].includes(word)) || productName.toLowerCase()
+
+    // Heurística: palabras terminadas en "a" suelen ser femeninas ("una"), el resto masculinas ("un")
+    let articulo = ""
+    if (mainWord.endsWith("a")) {
+      articulo = "una"
+    } else if (mainWord.endsWith("as")) {
+      articulo = "unas"
+    } else if (mainWord.endsWith("es")) {
+      articulo = "unos"
+    }
+    else {
+      articulo = "un"
+    }
+
+    const message = `¡Hola! Me gustaría pedir ${articulo} ${productName.toLowerCase()} 🍔`
     sendWhatsAppMessage(data.restaurant.phone, message)
   }
 
@@ -302,11 +323,11 @@ export function Menu() {
                       alt={product.name}
                       width={100}
                       height={100}
-                      className="w-full h-32 object-cover rounded-lg pointer-events-none"
+                      className="w-full h-full object-cover rounded-lg pointer-events-none"
                       draggable={false}
                     />
                     {product.popular && !isOutOfStock && (
-                      <Badge className="absolute top-2 right-2 bg-red-600 text-white text-xs">POPULAR</Badge>
+                      <Badge className="absolute top-2 right-2 bg-yellow-400/90 text-black text-xs">Popular</Badge>
                     )}
                     {isOutOfStock && (
                       <div className="absolute inset-0 bg-black/70 rounded-lg flex items-center justify-center">
@@ -341,7 +362,16 @@ export function Menu() {
                         onClick={(e) => {
                           e.stopPropagation()
                           if (!isDragging) {
-                            handleOrderProduct(product.name, product.stock)
+                            // Si la categoría es "Hamburguesas", anteponer "Hamburguesa de" al nombre
+                            const categoryName = getCategoryName(product.category_id).toLowerCase()
+                            const isHamburguesa = categoryName.includes("hamburguesa")
+                            const displayName = isHamburguesa
+                              ? product.name.trim().toLowerCase() === "mixta"
+                                ? "hamburguesa mixta"
+                                : `hamburguesa de ${product.name}`
+                              : product.name
+
+                            handleOrderProduct(displayName, product.stock)
                           }
                         }}
                         disabled={isOutOfStock}
