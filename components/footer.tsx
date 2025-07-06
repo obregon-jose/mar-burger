@@ -32,7 +32,7 @@ export function Footer() {
                   priority
                 />
               </div>
-              <div>
+              <div className="sm:block- uppercase">
                 <span className="text-yellow-400 font-bold text-xl">MAR </span>
                 <span className="text-white font-bold text-xl">BURGER</span>
               </div>

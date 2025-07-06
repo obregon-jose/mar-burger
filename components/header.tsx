@@ -40,7 +40,7 @@ export function Header() {
                   priority
                 />
               </div>
-              <div className="sm:block">
+              <div className="sm:block uppercase">
                 <span className="text-yellow-400 font-extrabold text-2xl ">MAR </span>
                 <span className="text-white font-extrabold text-2xl ">BURGER</span>
               </div>

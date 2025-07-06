@@ -415,7 +415,7 @@ export function Menu() {
     <section id="menu" className="py-10 bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center mb-12 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 animate-pulse-">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 animate-pulse- uppercase">
             <span className="text-yellow-400">NUESTROS</span>
             <span className="text-white"> PLATOS</span>
           </h2>

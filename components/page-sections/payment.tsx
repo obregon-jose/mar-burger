@@ -13,7 +13,7 @@ export function PaymentMethod() {
         <section id="payment" className="py-12 bg-gray-900">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-8 sm:mb-12">
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 uppercase">
                         {/* Paga Como Quieras */}
                         <span className="text-yellow-400">MÉTODOS </span>
                         <span className="text-white">DE PAGO</span>

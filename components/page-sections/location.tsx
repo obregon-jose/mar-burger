@@ -16,7 +16,7 @@ export function Location() {
     <section id="ubicacion" className="py-10 sm:py-10 lg:py-10 bg-black">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 uppercase">
             <span className="text-red-500">DÓNDE</span>
             <span className="text-white"> ESTAMOS</span>
           </h2>
@@ -66,7 +66,7 @@ export function Location() {
                       {hours.map((item) => (
                         <div key={item.id} className="flex items-center space-x-3">
                           <Clock className="w-5 h-5 text-red-500 flex-shrink-0" />
-                          <span className="text-gray-300">{`${item.day} ${item.open} - ${item.close}`}</span>
+                          <span className="text-gray-300">{`${item.day}: ${item.open} - ${item.close}`}</span>
                         </div>
                       ))}
                     </div>

@@ -31,7 +31,7 @@ export function Hero() {
 
               <div className="flex flex-col md:flex-row md:items-center md:space-x-6">
                 <div className="flex-1">
-                  <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold">
+                  <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold uppercase">
                     <span className="text-yellow-400">MAR</span>
                     <span className="text-white"> BURGER</span>
                   </h1>

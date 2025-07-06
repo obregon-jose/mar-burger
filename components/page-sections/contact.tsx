@@ -37,7 +37,7 @@ export function Contact() {
     <section id="contacto" className="py-10 bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 uppercase">
             {/* <span className="text-yellow-400">CONTÁCTANOS</span> */}
             <span className="text-yellow-400">DÉJANOS </span>
             <span className="text-white">TU MENSAJE</span>
