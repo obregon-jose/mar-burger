@@ -153,7 +153,7 @@ const initialData: RestaurantData = {
   deliveryZones: [
     { id: 1, name: "Centro", price: 2000, time: "20-30 min", enabled: false },
     { id: 2, name: "Norte", price: 2000, time: "30-40 min", enabled: false },
-    { id: 3, name: "Sur", price: 0, time: "10-20 min", enabled: true },
+    { id: 3, name: "Sur", price: 0, time: "10-20 min", enabled: false },
     { id: 4, name: "Oeste", price: 2000, time: "20-30 min", enabled: false },
   ],
   paymentMethods: [
@@ -169,7 +169,7 @@ const initialData: RestaurantData = {
       name: "Nequi",
       icon: "smartphone",
       description: "Transferencia por Nequi",
-      enabled: false,
+      enabled: true,
     },
     {
       id: 3,
@@ -198,7 +198,7 @@ const initialData: RestaurantData = {
       id: 2,
       name: "Acompañamientos",
       icon: "🍟",
-      enabled: false,
+      enabled: true,
     },
     {
       id: 3,

@@ -29,14 +29,14 @@ export function Menu() {
       articulo = "una"
     } else if (mainWord.endsWith("as")) {
       articulo = "unas"
-    } else if (mainWord.endsWith("es")) {
-      articulo = "unos"
+    } else if (mainWord.endsWith("ron")) {
+      articulo = ""
     }
     else {
       articulo = "un"
     }
 
-    const message = `¡Hola! Me gustaría pedir ${articulo} ${productName.toLowerCase()} 🍔`
+    const message = `¡Hola!\nMe gustaría pedir ${articulo} ${productName.toLowerCase()} 🍔`
     sendWhatsAppMessage(data.restaurant.phone, message)
   }
 

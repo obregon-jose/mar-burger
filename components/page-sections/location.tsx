@@ -121,17 +121,6 @@ export function Location() {
 
             {/* Mapa */}
             <div className="hidden relative lg:block bg-gray-900 border border-gray-700 rounded-lg overflow-hidden flex-1 flex items-center justify-center ">
-              {/* <iframe
-                title="Mapa de ubicación" 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1084.4465408764856!2d-76.52695766780764!3d3.410456580401372!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6b61f57ac6d%3A0x41b2e6487dc08cf1!2sCra.%2046b%20%2315-57%2C%20Comuna%2010%2C%20Cali%2C%20Valle%20del%20Cauca!5e1!3m2!1ses!2sco!4v1724266764747!5m2!1ses!2sco" 
-                width="100%"
-                height="100%" 
-                style={{ border: 0, minHeight: 256, width: "100%" }}
-                allowfullscreen 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
-                /> */}
-
               <iframe
                 title="Mapa de ubicación"
                 src={`https://www.google.com/maps?q=${encodeURIComponent(data.restaurant.address)}&output=embed`}

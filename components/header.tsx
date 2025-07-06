@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useRestaurant } from "@/contexts/restaurant-context"
 import { WhatsAppIcon } from "@/app/icons"
-import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
+// import sendWhatsAppMessage from "@/utils/sendWhatsAppMessage"
 import { Shopping } from "./shopping"
 
 export function Header() {
@@ -17,11 +17,11 @@ export function Header() {
   const { data } = useRestaurant()
 
   const navItems = [
-    { href: "#inicio", label: "Inicio" },
-    { href: "#menu", label: "Menú" },
-    { href: "#promociones", label: "Promociones" },
-    { href: "#ubicacion", label: "Visítanos" },
-    { href: "#contacto", label: "Contáctanos" },
+    { id:"inicio", href: "#inicio", label: "Inicio" },
+    { id:"menu", href: "#menu", label: "Menú" },
+    { id:"promociones", href: "#promociones", label: "Promociones" },
+    { id:"ubicacion", href: "#ubicacion", label: "Visítanos" },
+    { id:"contacto", href: "#contacto", label: "Contáctanos" },
   ]
 
   return (
@@ -64,12 +64,12 @@ export function Header() {
                 <span className="text-sm">{data.restaurant.phone}</span>
               </div>
 
-              <Button
+              {/* <Button
                 onClick={() => sendWhatsAppMessage(data.restaurant.phone)}
                 
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold">
                 PEDIR AHORA
-              </Button>
+              </Button> */}
             </div>
 
             {/* MOBILE */}
