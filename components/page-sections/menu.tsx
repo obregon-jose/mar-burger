@@ -20,45 +20,45 @@ export function Menu() {
   }
 
   const categoryMap = new Map<number, string>(
-  data.productCategory
-    .filter((cat) => cat.enabled)
-    .map((cat) => [cat.id, cat.name])
-)
-
-const getCategoryName = (category_id?: number): string => {
-  return category_id != null && categoryMap.has(category_id)
-    ? categoryMap.get(category_id)!
-    : "Otros"
-}
-
-// Obtener nombres únicos de categorías habilitadas (más "Otros" si aplica)
-const categories = Array.from(
-  new Set(
-    data.products
-      .filter((product) => product.enabled)
-      .map((product) => getCategoryName(product.category_id))
-  )
-)
-
-const allCategories = ["Menú", ...categories]
-
-const filteredProducts = data.products
-  .filter((product) => product.enabled)
-  .filter((product) => {
-    if (activeCategory === "Menú") return true
-    return getCategoryName(product.category_id) === activeCategory
-  })
-  .filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.description?.toLowerCase().includes(searchTerm.toLowerCase())
+    data.productCategory
+      .filter((cat) => cat.enabled)
+      .map((cat) => [cat.id, cat.name])
   )
 
-const groupedProducts = categories.reduce((acc, catName) => {
-  acc[catName] = filteredProducts.filter(
-    (product) => getCategoryName(product.category_id) === catName
+  const getCategoryName = (category_id?: number): string => {
+    return category_id != null && categoryMap.has(category_id)
+      ? categoryMap.get(category_id)!
+      : "Otros"
+  }
+
+  // Obtener nombres únicos de categorías habilitadas (más "Otros" si aplica)
+  const categories = Array.from(
+    new Set(
+      data.products
+        .filter((product) => product.enabled)
+        .map((product) => getCategoryName(product.category_id))
+    )
   )
-  return acc
-}, {} as Record<string, typeof data.products>)
+
+  const allCategories = ["Menú", ...categories]
+
+  const filteredProducts = data.products
+    .filter((product) => product.enabled)
+    .filter((product) => {
+      if (activeCategory === "Menú") return true
+      return getCategoryName(product.category_id) === activeCategory
+    })
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description?.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+
+  const groupedProducts = categories.reduce((acc, catName) => {
+    acc[catName] = filteredProducts.filter(
+      (product) => getCategoryName(product.category_id) === catName
+    )
+    return acc
+  }, {} as Record<string, typeof data.products>)
 
 
   function InfiniteCarousel({ products }: { products: typeof data.products }) {
@@ -95,15 +95,15 @@ const groupedProducts = categories.reduce((acc, catName) => {
       if (!carousel) return
 
       const translateX = currentIndex * cardWidth
-      
+
       if (isTransitioning) {
         carousel.style.transition = 'transform 0.5s ease-in-out'
         carousel.style.transform = `translateX(-${translateX}px)`
-        
+
         // Después de la transición, reposicionar si es necesario
         const handleTransitionEnd = () => {
           setIsTransitioning(false)
-          
+
           // Si estamos en el último tercio, saltar al primer tercio
           if (currentIndex >= products.length * 2) {
             carousel.style.transition = 'none'
@@ -118,10 +118,10 @@ const groupedProducts = categories.reduce((acc, catName) => {
             setCurrentIndex(newIndex)
             carousel.style.transform = `translateX(-${newIndex * cardWidth}px)`
           }
-          
+
           carousel.removeEventListener('transitionend', handleTransitionEnd)
         }
-        
+
         carousel.addEventListener('transitionend', handleTransitionEnd)
         return () => carousel.removeEventListener('transitionend', handleTransitionEnd)
       } else {
@@ -160,10 +160,10 @@ const groupedProducts = categories.reduce((acc, catName) => {
 
     const handleMouseMove = (e: React.MouseEvent) => {
       if (!isDragging) return
-      
+
       setCurrentX(e.clientX)
       const diff = e.clientX - startX
-      
+
       // Aplicar el offset de arrastre en tiempo real
       const carousel = carouselRef.current
       if (carousel) {
@@ -175,10 +175,10 @@ const groupedProducts = categories.reduce((acc, catName) => {
 
     const handleMouseUp = () => {
       if (!isDragging) return
-      
+
       const diff = currentX - startX
       const threshold = 100 // Mínimo para cambiar slide
-      
+
       if (Math.abs(diff) > threshold) {
         if (diff > 0) {
           prevSlide() // Deslizar hacia la derecha = slide anterior
@@ -193,7 +193,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
           carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`
         }
       }
-      
+
       setIsDragging(false)
       setIsPaused(false)
     }
@@ -208,10 +208,10 @@ const groupedProducts = categories.reduce((acc, catName) => {
 
     const handleTouchMove = (e: React.TouchEvent) => {
       if (!isDragging) return
-      
+
       setCurrentX(e.touches[0].clientX)
       const diff = e.touches[0].clientX - startX
-      
+
       // Aplicar el offset de arrastre en tiempo real
       const carousel = carouselRef.current
       if (carousel) {
@@ -223,10 +223,10 @@ const groupedProducts = categories.reduce((acc, catName) => {
 
     const handleTouchEnd = () => {
       if (!isDragging) return
-      
+
       const diff = currentX - startX
       const threshold = 100
-      
+
       if (Math.abs(diff) > threshold) {
         if (diff > 0) {
           prevSlide()
@@ -241,7 +241,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
           carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`
         }
       }
-      
+
       setIsDragging(false)
       setIsPaused(false)
     }
@@ -272,7 +272,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
     }
 
     return (
-      <div 
+      <div
         className="overflow-hidden pb-4 cursor-grab active:cursor-grabbing select-none"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -283,7 +283,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div 
+        <div
           ref={carouselRef}
           className="flex gap-4"
           style={{ width: `${infiniteProducts.length * cardWidth}px` }}
@@ -300,8 +300,8 @@ const groupedProducts = categories.reduce((acc, catName) => {
                     <Image
                       src={product?.image || "/images/logo.png"}
                       alt={product.name}
-                      width={180}
-                      height={180}
+                      width={100}
+                      height={100}
                       className="w-full h-32 object-cover rounded-lg pointer-events-none"
                       draggable={false}
                     />
@@ -317,16 +317,27 @@ const groupedProducts = categories.reduce((acc, catName) => {
                     )}
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors text-center">
+                    <h3
+                      className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors text-center break-words min-h-[2.5em] flex items-center justify-center"
+                      style={{ lineHeight: "1.25", wordBreak: "break-word" }}
+                    >
                       {product.name}
                     </h3>
+                    {/* <h3 className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors text-center">
+                      {product.name}
+                    </h3> */}
                     <p className="text-gray-400 text-xs text-center">{product.description}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold text-red-500">
-                        ${product.price.toLocaleString()}
-                      </span>
-                        <Button
-                        size="sm"
+                      {product.price === 0 ? (
+                        <span className="text-sm font-semibold text-gray-400 italic">
+                          Consultar precio
+                        </span>
+                      ) : (
+                        <span className="text-lg font-bold text-red-500">
+                          ${product.price.toLocaleString()}
+                        </span>
+                      )}
+                      <Button
                         onClick={(e) => {
                           e.stopPropagation()
                           if (!isDragging) {
@@ -334,7 +345,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
                           }
                         }}
                         disabled={isOutOfStock}
-                        className={`font-bold ${isOutOfStock
+                        className={`font-bold h-6 ${isOutOfStock
                           ? "bg-gray-600 text-gray-400 cursor-not-allowed"
                           : "bg-red-600 hover:bg-red-700 text-white"
                           }`}
@@ -348,7 +359,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
             )
           })}
         </div>
-        
+
         {/* Indicadores de navegación */}
         <div className="flex justify-center mt-4 gap-2">
           {products.map((_, index) => {
@@ -356,9 +367,8 @@ const groupedProducts = categories.reduce((acc, catName) => {
             return (
               <button
                 key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  isActive ? 'bg-yellow-400 w-6' : 'bg-gray-600 hover:bg-gray-500'
-                }`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${isActive ? 'bg-yellow-400 w-6' : 'bg-gray-600 hover:bg-gray-500'
+                  }`}
                 onClick={() => {
                   if (!isTransitioning) {
                     setIsTransitioning(true)
@@ -382,7 +392,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
         className="mb-12 bg-gray-800 rounded-2xl shadow-lg p-6 border border-yellow-400/30"
       >
         <div className="flex flex-col items-center mb-4 animate-pulse">
-            <h3
+          <h3
             className="text-2xl font-extrabold text-center tracking-widest uppercase drop-shadow-lg"
             style={{
               background: "linear-gradient(90deg, #facc15, #ef4444, #facc15)",
@@ -391,9 +401,9 @@ const groupedProducts = categories.reduce((acc, catName) => {
               backgroundClip: "text",
               color: "transparent",
             }}
-            >
+          >
             {category}
-            </h3>
+          </h3>
           <span className="block w-16 h-1 bg-yellow-400 rounded-full mt-1" />
         </div>
         <InfiniteCarousel products={products} />
@@ -410,7 +420,7 @@ const groupedProducts = categories.reduce((acc, catName) => {
             <span className="text-white"> PLATOS</span>
           </h2>
           <p className="text-gray-300 text-lg max-w-4xl mx-auto">
-            Descubre nuestras deliciosas opciones preparadas con ingredientes frescos y de la mejor calidad
+            Descubre nuestras deliciosas opciones preparadas con ingredientes frescos y de la mejor calidad.
           </p>
         </div>
 

@@ -32,9 +32,9 @@ export function Questions() {
                         <span className="text-red-500" >Preguntas </span>
                         <span className="text-white">Frecuentes</span>
                     </h2>
-                    {/* <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-            
-                    </p> */}
+                    <p className="text-gray-300 text-base sm:text-lg max-w-4xl mx-auto">
+                        Resuelvemos al instante las dudas más sabrosas y comunes de nuestros clientes.
+                    </p>
                 </div>
             </div>
             <div className=" max-w-4xl px-6 mx-auto">

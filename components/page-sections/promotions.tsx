@@ -57,9 +57,10 @@ export function Promotions() {
     <section id="promociones" className="py-10 sm:py-10 lg:py-10 bg-black relative- z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-red-500">PROMOCIONES</span>
-            <span className="text-white"> ESPECIALES</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 uppercase">
+            {/* PROMOCIONES */}{/* ESPECIALES */}
+            <span className="text-red-500">Combos </span>
+            <span className="text-white">Locos</span>
           </h2>
           {availableProductsWithPromotions.length > 0 && (
             <p className="text-gray-300 text-base sm:text-lg max-w-4xl mx-auto">
@@ -72,7 +73,7 @@ export function Promotions() {
           <div className="text-center">
             <div className="bg-gray-900 border border-red-600/20 rounded-2xl p-8 sm:p-12 max-w-md mx-auto">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">¡Próximamente!</h3>
-              <p className="text-gray-400 text-sm sm:text-base">Estamos preparando increíbles ofertas para ti</p>
+              <p className="text-gray-400 text-sm sm:text-base">Estamos preparando increíbles ofertas para ti.</p>
             </div>
           </div>
         ) : (

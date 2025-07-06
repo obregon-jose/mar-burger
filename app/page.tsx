@@ -25,8 +25,8 @@ export default function HomePage() {
           <PaymentMethod />
           <Location />
           <Contact />
-          <Questions />
-          <Reviews />
+          {/* <Questions /> */}
+          {/* <Reviews /> */}
         </main>
         <Footer /> 
       </div> 

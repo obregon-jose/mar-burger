@@ -38,12 +38,12 @@ export function Reviews() {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl lg:text-5xl font-bold mb-4 uppercase">
-                        {/* <span className="text-yellow-400">CONTÁCTANOS</span> */}
                         <span className="text-yellow-400">Sabores </span>
                         <span className="text-white">y opiniones</span>
                     </h2>
-                    {/* <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                    </p> */}
+                    <p className="text-gray-300 text-lg max-w-4xl mx-auto">
+                        Cada bocado merece ser contado. Tus palabras le dan sazón a lo que hacemos.
+                    </p>
                 </div>
             </div>
 

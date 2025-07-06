@@ -14,6 +14,7 @@ export function PaymentMethod() {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-8 sm:mb-12">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                        {/* Paga Como Quieras */}
                         <span className="text-yellow-400">MÉTODOS </span>
                         <span className="text-white">DE PAGO</span>
                     </h2>

@@ -131,11 +131,12 @@ const initialData: RestaurantData = {
     logo: "/images/logo.png",
     heroImage: "",
     heroSlogan: "¡Sabor que conquista el mar y la ciudad!",
-    description:
-      "Disfruta las mejores hamburguesas y platos de mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
+    // description:"Disfruta las mejores hamburguesas y platos de mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
+    description: "Disfruta hamburguesas, mariscos, carnes y más en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
     phone: "3205521623",
     instagram: "marburgueroficial",
-    address: "Carrera 29 #66-05, Ciudad 2000, Cali", //corregir poner el iform
+    // address: "Calle 29 #66-05, Ciudad 2000, Cali",
+    address: "Cra. 67a #29-05, Ciudad 2000, Cali",
     enabled: true,
   },
   stats: {
@@ -150,10 +151,10 @@ const initialData: RestaurantData = {
     { id: 3, day: "Domingos", open: "12:00 am", close: "10:00 pm", enabled: true },
   ],
   deliveryZones: [
-    { id: 1, name: "Centro", price: 2000, time: "20-30 min", enabled: true },
-    { id: 2, name: "Norte", price: 2000, time: "30-40 min", enabled: true },
-    { id: 3, name: "Sur", price: 0, time: "10-20 min", enabled: true },
-    { id: 4, name: "Oeste", price: 2000, time: "20-30 min", enabled: true },
+    { id: 1, name: "Centro", price: 2000, time: "20-30 min", enabled: false },
+    { id: 2, name: "Norte", price: 2000, time: "30-40 min", enabled: false },
+    { id: 3, name: "Sur", price: 0, time: "10-20 min", enabled: false },
+    { id: 4, name: "Oeste", price: 2000, time: "20-30 min", enabled: false },
   ],
   paymentMethods: [
     {
@@ -168,7 +169,7 @@ const initialData: RestaurantData = {
       name: "Nequi",
       icon: "smartphone",
       description: "Transferencia por Nequi",
-      enabled: true,
+      enabled: false,
     },
     {
       id: 3,
@@ -546,7 +547,7 @@ const initialData: RestaurantData = {
       discountPercent: 17,
       startDate: "2025-07-01",
       endDate: "2025-07-31",
-      enabled: true,
+      enabled: false,
       featured: true,
       isFlashSale: false,
     },
@@ -559,7 +560,7 @@ const initialData: RestaurantData = {
       discountPercent: 50,
       startDate: "2025-01-01",
       endDate: "2025-12-31",
-      enabled: true,
+      enabled: false,
       featured: false,
       isFlashSale: false,
     },

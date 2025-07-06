@@ -43,7 +43,7 @@ export function Contact() {
             <span className="text-white">TU MENSAJE</span>
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            ¿Tienes alguna pregunta o sugerencia? Nos encantaría escucharte.
+            Tu opinión, tu antojo o tus preguntas… ¡aquí te escuchamos!
           </p>
         </div>
 
