@@ -1,38 +1,49 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { DEFAULT_SEO, SITE_URL } from "@/lib/seo-config";
+import DataSchema from "@/components/data-schema";
 
-const inter = Inter({ subsets: ["latin"] })
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mar Burger - Restaurante de comidas rápidas y mariscos",
-  description: "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
+  title: {
+    default: DEFAULT_SEO.title,
+    template: `%s | ${DEFAULT_SEO.openGraph.siteName}`,
+  },
+  description: DEFAULT_SEO.description,
+  keywords: DEFAULT_SEO.keywords,
+  metadataBase: new URL(SITE_URL),
+
   openGraph: {
-    title: "Mar Burger",
-    description: "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
-    url: "https://marburger.vercel.app", 
-    images: ["/images/logo.png"],
-    locale: "es_ES",
+    ...DEFAULT_SEO.openGraph,
+    title: DEFAULT_SEO.title,
+    description: DEFAULT_SEO.description,
+    url: SITE_URL,
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Mar Burger - Restaurante de comidas rápidas y mariscos",
-    description: "Disfruta las mejores hamburguesas y mariscos en un solo lugar. Calidad, frescura y sabor único en cada bocado.",
-    images: ["/images/logo.png"],
+    ...DEFAULT_SEO.twitter,
+    title: DEFAULT_SEO.title,
+    description: DEFAULT_SEO.description,
+    images: DEFAULT_SEO.openGraph.images,
   },
   verification: {
     google: "SM1h4jU_nI-Z-wSfALsiVmvB6zV0AS7jZFruE0f2MYo",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="es">
+      <head>
+        <DataSchema />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
-  )
+  );
 }
