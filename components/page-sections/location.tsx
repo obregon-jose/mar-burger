@@ -21,7 +21,7 @@ export function Location() {
             <span className="text-white"> ESTAMOS</span>
           </h2>
           <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-            Visítanos nuestro restaurante en Santiago de Cali.
+            Visítenos en nuestro restaurante en Santiago de Cali.
           </p>
         </div>
 

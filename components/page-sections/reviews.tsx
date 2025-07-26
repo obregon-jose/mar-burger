@@ -10,10 +10,10 @@ const allReviews = [
     { name: "Luis Torres", comment: "Buena sazón caribeña. Todo muy sabroso y rápido.", rating: 4, date: "Junio 2025" },
     { name: "Sofía Ramírez", comment: "Me gustó mucho el ceviche, aunque la bebida estaba un poco dulce.", rating: 4, date: "Mayo 2025" },
     { name: "Pedro Medina", comment: "Ambiente relajado, ideal para almorzar mariscos sin gastar mucho.", rating: 5, date: "Mayo 2025" },
-    { name: "Gabriela Suárez", comment: "¡Excelente atención y la comida llegó muy rápido! El arroz con mariscos estaba delicioso, definitivamente regresaré con mi familia.", rating: 5, date: "Abril 2025" },
-    { name: "Jorge Castillo", comment: "El lugar es pequeño pero acogedor. Me gustó la variedad de opciones en el menú.", rating: 4, date: "Marzo 2025" },
-    { name: "Valentina Ríos", comment: "Probé la hamburguesa de pescado y fue una grata sorpresa. Muy recomendable.", rating: 5, date: "Febrero 2025" },
-    { name: "Miguel Ángel", comment: "Todo bien, pero el local estaba un poco lleno y tardaron en atenderme.", rating: 3, date: "Enero 2025" },
+    // { name: "Gabriela Suárez", comment: "¡Excelente atención y la comida llegó muy rápido! El arroz con mariscos estaba delicioso, definitivamente regresaré con mi familia.", rating: 5, date: "Abril 2025" },
+    // { name: "Jorge Castillo", comment: "El lugar es pequeño pero acogedor. Me gustó la variedad de opciones en el menú.", rating: 4, date: "Marzo 2025" },
+    // { name: "Valentina Ríos", comment: "Probé la hamburguesa de pescado y fue una grata sorpresa. Muy recomendable.", rating: 5, date: "Febrero 2025" },
+    // { name: "Miguel Ángel", comment: "Todo bien, pero el local estaba un poco lleno y tardaron en atenderme.", rating: 3, date: "Enero 2025" },
 ];
 
 const Star = ({ filled }: { filled: boolean }) => (
@@ -58,7 +58,8 @@ export function Reviews() {
                             <div className="flex justify-between">
                                 <div className="flex items-center mb-4">
                                     <div className="w-12 h-12 relative bg-yellow-100 rounded-full flex items-center justify-center font-bold text-yellow-700 mr-3 text-lg uppercase">
-                                        {review.name[0]}
+                                        {/* {review.name[0]} */}
+                                        {review.name[0]}{review.name.split(' ')[1]?.[0] || ''}
                                     </div>
                                     <div>
                                         <p className="text-gray-300 font-semibold">{review.name}</p>

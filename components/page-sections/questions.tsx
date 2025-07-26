@@ -3,14 +3,14 @@
 import React, { useState } from "react";
 
 const faqs = [
-    {
-        question: "¿Cómo hago un pedido?",
-        answer: "Puedes hacer tu pedido a través de nuestra página web o llamando al número que aparece en la sección de contacto.",
-    },
-    {
-        question: "¿Cuáles son los métodos de pago aceptados?",
-        answer: "Aceptamos pagos en efectivo, tarjeta de crédito y débito.",
-    },
+    // {
+    //     question: "¿Cómo hago un pedido?",
+    //     answer: "Puedes hacer tu pedido a través de nuestra página web o llamando al número que aparece en la sección de contacto.",
+    // },
+    // {
+    //     question: "¿Cuáles son los métodos de pago aceptados?",
+    //     answer: "Aceptamos pagos en efectivo, tarjeta de crédito y débito.",
+    // },
     {
         question: "¿Realizan entregas a domicilio?",
         answer: "Sí, realizamos entregas a domicilio dentro de la ciudad.",
